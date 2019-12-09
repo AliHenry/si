@@ -28,7 +28,7 @@
         </div>
       </li>
       <li>
-        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{asset('storage/'.Auth::user()->profile->image)}}" alt="Avatar"></a>
+{{--        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{asset('storage/'.Auth::user()->profile->image)}}" alt="Avatar"></a>--}}
         <div class="dropdown-menu dropdown-menu-right notification-dropdown">
           <a class="dropdown-item" href="/admin/settings/social"><i class="icon-fa icon-fa-cogs"></i> Settings</a>
           <a class="dropdown-item" href="/logout"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>
