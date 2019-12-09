@@ -10,13 +10,13 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('admin.sessions.login');
+        return view('admin.sessions.login-3');
     }
 
     public function postLogin(Requests\LoginRequest $request)
     {
         if (User::login($request)) {
-            flash('Welcome to Laraspace.')->success();
+            flash('Welcome to S.I Comprehensive.')->success();
             if (Auth::user()->isAdmin()) {
                 return redirect()->to('/admin');
             } else {
@@ -60,7 +60,7 @@ class AuthController extends Controller
         $provider_user = Socialite::driver($provider)->user();
         $user = $this->findUserByProviderOrCreate($provider, $provider_user);
         auth()->login($user);
-        flash('Welcome to Laraspace.')->success();
+        flash('Welcome to laraspace.')->success();
 
         return redirect()->to('/admin');
     }

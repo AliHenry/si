@@ -3,13 +3,59 @@
 @section('content')
     <div class="main-content" id="dashboardPage">
         <div class="row">
+            <div class="col-md-12 col-lg-6 col-xl-3">
+                <a class="dashbox" href="#">
+                    <i class="icon-fa icon-fa-users text-primary"></i>
+                    <span class="title">
+                      {{$employeesCount}}
+                    </span>
+                    <span class="desc">
+                      Employees
+                    </span>
+                </a>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+                <a class="dashbox" href="#">
+                    <i class="icon-im icon-im-users text-success"></i>
+                    <span class="title">
+                      {{$customersCount}}
+                    </span>
+                    <span class="desc">
+                      Customers
+                    </span>
+                </a>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+                <a class="dashbox" href="#">
+                    <i class="icon-fa icon-fa-shopping-cart text-danger"></i>
+                    <span class="title">
+                      {{$zonesCount}}
+                    </span>
+                    <span class="desc">
+                      Zones
+                    </span>
+                </a>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+                <a class="dashbox" href="#">
+                    <i class="icon-fa icon-fa-comments text-info"></i>
+                    <span class="title">
+                      {{$activeBillingCount}}
+                    </span>
+                    <span class="desc">
+                      Active Bills
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 col-lg-6">
                 <a class="dashbox dashbox-circle-progress" href="#">
                     <span class="desc">
-                        Sales
+                        Arrears
                     </span>
                     <span class="title text-primary">
-                      $ 3500
+                      ₦ {{$arrears}}
                     </span>
                     <div class="easy-pie-chart" data-percent="20" data-color="#007dcc">
                         <span class="percent text-primary"></span>
@@ -22,7 +68,7 @@
                       Profit
                     </span>
                     <span class="title text-success">
-                      $ 1000
+                      ₦ 1000
                     </span>
                     <div class="easy-pie-chart" data-percent="50" data-color="#4fc47f">
                         <span class="percent text-success"></span>
@@ -35,7 +81,7 @@
                         Expense
                     </span>
                     <span class="title text-danger">
-                      $ 200
+                      ₦ 200
                     </span>
                     <div class="easy-pie-chart" data-percent="70" data-color="#f35a3d">
                         <span class="percent text-danger"></span>
@@ -48,7 +94,7 @@
                       Revenue
                     </span>
                     <span class="title text-info">
-                      $ 5000
+                      ₦ {{ $revenue }}
                     </span>
                     <div class="easy-pie-chart" data-percent="80" data-color="#5BBFDE">
                         <span class="percent text-info"></span>
@@ -85,12 +131,12 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="balanceSummry" role="tabpanel">
                                 <line-chart
-                                        :labels="['Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14', 'Oct 15', 'Oct 16']"
-                                        :values="[200 , 1000 , 300, 551, 516, 225, 40]"></line-chart>
+                                        :labels="{{$days}}"
+                                        :values="{{$revenueDaysAmount}}"></line-chart>
                             </div>
                             <div class="tab-pane" id="monthlyProfit" role="tabpanel">
-                                <line-chart :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
-                                            :values="[5000, 6000 , 2000 , 7000 , 1000 , 3000 , 5000]"></line-chart>
+                                <line-chart :labels="{{$revenueMonths}}"
+                                            :values="{{$revenueMonthlyAmount}}"></line-chart>
                             </div>
                             <div class="tab-pane" id="yearly" role="tabpanel">
                                 <line-chart :labels="['2011', '2012', '2013', '2014', '2015', '2016', '2017']"
@@ -122,8 +168,8 @@
                     </div>
                     <div class="card-body">
                         <pie-chart
-                                :labels="['Revenue', 'Expense', 'Profit']"
-                                :values="[300, 50, 250]"
+                                :labels="['Revenue', 'Expense', 'Arrears']"
+                                :values="[{{$revenue}}, 50, {{$arrears}}]"
                                 :bg-colors="['#5BBFDE','#f35a3d','#4fc47f']"
                                 :hover-bg-colors="['#5BBFDE','#f35a3d','#4fc47f']">
                         </pie-chart>
@@ -142,8 +188,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <bar-chart :labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
-                                   :values="[5000, 6000 , 2000 , 7000 , 1000 , 3000 , 5000]"></bar-chart>
+                        <bar-chart :labels="{{$revenueMonths}}"
+                                   :values="{{$revenueMonthlyAmount}}"></bar-chart>
                     </div>
                 </div>
             </div>

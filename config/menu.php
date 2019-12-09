@@ -18,156 +18,110 @@ return [
     'sidebar' => [
         [
             'title' => 'Dashboard',
-            'link' => '#',
+            'link' => '/admin/dashboard/',
             'active' => 'admin/dashboard*',
+            'slug' => 'view.users',
             'icon' => 'icon-fa icon-fa-dashboard',
+        ],
+        [
+            'title' => 'Users',
+            'link' => '#',
+            'active' => 'admin/manage-users*',
+            'icon' => 'icon-fa icon-fa-user',
+            'slug' => 'view.users',
             'children' => [
                 [
-                    'title' => 'Basic',
-                    'link' => '/admin/dashboard/basic',
-                    'active' => 'admin/dashboard/basic',
+                    'title' => 'Users',
+                    'link' => '/admin/manage-users/users',
+                    'active' => 'admin/manage-users/users*',
+                    'slug' => 'view.users',
                 ],
                 [
-                    'title' => 'Ecommerce',
-                    'link' => '/admin/dashboard/ecommerce',
-                    'active' => 'admin/dashboard/ecommerce',
+                    'title' => 'Roles',
+                    'link' => '/admin/manage-users/roles',
+                    'active' => 'admin/manage-users/roles*',
+                    'slug' => 'view.roles',
                 ],
                 [
-                    'title' => 'Finance',
-                    'link' => '/admin/dashboard/finance',
-                    'active' => 'admin/dashboard/finance',
-                ]
+                    'title' => 'Permissions',
+                    'link' => '/admin/manage-users/permissions',
+                    'active' => 'admin/manage-users/permissions*',
+                    'slug' => 'view.permissions',
+                ],
             ]
         ],
         [
-            'title' => 'Layouts',
+            'title' => 'Employees',
             'link' => '#',
-            'active' => 'admin/layouts*',
+            'active' => 'admin/manage-employees*',
+            'slug' => 'view.employees',
+            'icon' => 'icon-fa icon-fa-users',
+            'children' => [
+                [
+                    'title' => 'Employees',
+                    'link' => '/admin/manage-employees/employees',
+                    'active' => 'admin/manage-employees/Employees*',
+                    'slug' => 'view.employees',
+                ],
+                [
+                    'title' => 'Attendance',
+                    'link' => '/admin/manage-employees/attendance',
+                    'active' => '/admin/manage-employees/attendance*',
+                    'slug' => 'view.attendance',
+                ],
+                [
+                    'title' => 'Leave',
+                    'link' => '/admin/permissions/1',
+                    'active' => 'admin/users/*',
+                    'slug' => 'view.users',
+                ],
+            ]
+        ],
+        [
+            'title' => 'Customers',
+            'link' => '#',
+            'active' => 'admin/manage-customers*',
+            'slug' => 'view.customers',
+            'icon' => 'icon-fa icon-fa-users',
+            'children' => [
+                [
+                    'title' => 'Customer',
+                    'link' => '/admin/manage-customers/customers',
+                    'active' => 'admin/manage-customers/Customers*',
+                    'slug' => 'view.customers',
+                ],
+            ]
+        ],
+        [
+            'title' => 'Manage Payment',
+            'link' => '#',
+            'active' => 'admin/manage-payment*',
             'icon' => 'icon-fa icon-fa-th-large',
+            'slug' => 'view.payee',
             'children' => [
                 [
-                    'title' => 'Sidebar',
-                    'link' => '/admin/layouts/sidebar',
-                    'active' => 'admin/layouts/sidebar',
+                    'title' => 'Billing',
+                    'link' => '/admin/manage-payment/billing',
+                    'active' => 'admin/manage-payment/billing*',
+                    'slug' => 'view.billing',
                 ],
                 [
-                    'title' => 'Icon Sidebar',
-                    'link' => '/admin/layouts/icon-sidebar',
-                    'active' => 'admin/layouts/icon-sidebar',
+                    'title' => 'Make Payment',
+                    'link' => '/admin/manage-payment/make-payment',
+                    'active' => 'admin/manage-payment/make-payment*',
+                    'slug' => 'view.payee',
                 ],
                 [
-                    'title' => 'Horizontal Menu',
-                    'link' => '/admin/layouts/horizontal-menu',
-                    'active' => 'admin/layouts/horizontal-menu',
-                ]
-            ]
-        ],
-        [
-            'title' => 'Basic UI',
-            'link' => '#',
-            'active' => 'admin/basic-ui*',
-            'icon' => 'icon-fa icon-fa-star',
-            'children' => [
-                [
-                    'title' => 'Buttons',
-                    'link' => '/admin/basic-ui/buttons',
-                    'active' => 'admin/basic-ui/buttons',
+                    'title' => 'Generate Bill',
+                    'link' => '/admin/manage-payment/generate-bill',
+                    'active' => 'admin/manage-payment/generate-bill*',
+                    'slug' => 'view.billing',
                 ],
                 [
-                    'title' => 'Cards',
-                    'link' => '/admin/basic-ui/cards',
-                    'active' => 'admin/basic-ui/cards',
-                ],
-                [
-                    'title' => 'Tabs & Accordians',
-                    'link' => '/admin/basic-ui/tabs',
-                    'active' => 'admin/basic-ui/tabs',
-                ],
-                [
-                    'title' => 'Typography',
-                    'link' => '/admin/basic-ui/typography',
-                    'active' => 'admin/basic-ui/typography',
-                ],
-                [
-                    'title' => 'Tables',
-                    'link' => '/admin/basic-ui/tables',
-                    'active' => 'admin/basic-ui/tables',
-                ],
-                [
-                    'title' => 'Modals',
-                    'link' => '/admin/basic-ui/modals',
-                    'active' => 'admin/basic-ui/modals',
-                ],
-                [
-                    'title' => 'Progress Bar',
-                    'link' => '/admin/basic-ui/progress-bars',
-                    'active' => 'admin/basic-ui/progress-bars',
-                ],
-            ]
-        ],
-        [
-            'title' => 'Components',
-            'link' => '#',
-            'active' => 'admin/components*',
-            'icon' => 'icon-fa icon-fa-puzzle-piece',
-            'children' => [
-                [
-                    'title' => 'Datatables',
-                    'link' => '/admin/components/datatables',
-                    'active' => 'admin/components/datatables',
-                ],
-                [
-                    'title' => 'Notifications',
-                    'link' => '/admin/components/notifications',
-                    'active' => 'admin/components/notifications',
-                ],
-                [
-                    'title'=>' Nestable List',
-                    'link'=>'/admin/components/nestable-list',
-                    'active'=>'admin/components/nestable-list',
-                ],
-                [
-                    'title'=>'Nestable Tree',
-                    'link'=>'/admin/components/nestable-tree',
-                    'active'=>'admin/components/nestable-tree',
-                ],
-                [
-                    'title' => 'Image Cropper',
-                    'link' => '/admin/components/image-cropper',
-                    'active' => 'admin/components/image-cropper',
-                ],
-                [
-                    'title' => 'Image Zoom',
-                    'link' => '/admin/components/zoom',
-                    'active' => 'admin/components/zoom',
-                ],
-                [
-                    'title' => 'Calendar',
-                    'link' => '/admin/components/calendar',
-                    'active' => 'admin/components/calendar',
-                ],
-                [
-                    'title' => 'Rating',
-                    'link' => '#',
-                    'active' => 'admin/components/ratings*',
-                    'icon' => 'icon-fa icon-fa-star',
-                    'children' => [
-                        [
-                            'title' => 'Star Ratings',
-                            'link' => '/admin/components/ratings/star',
-                            'active' => 'admin/components/ratings/star',
-                        ],
-                        [
-                            'title' => 'Bar Ratings',
-                            'link' => '/admin/components/ratings/bar',
-                            'active' => 'admin/components/ratings/bar',
-                        ],
-                    ],
-                ],
-                [
-                    'title' => 'Contacts',
-                    'link' => '/admin/components/contacts',
-                    'active' => 'admin/components/contacts',
+                    'title' => 'Payment Type',
+                    'link' => '/admin/manage-payment/payment-type',
+                    'active' => 'admin/manage-payment/payment-type*',
+                    'slug' => 'view.payment.types',
                 ],
             ]
         ],
@@ -176,397 +130,96 @@ return [
             'link' => '#',
             'active' => 'admin/charts*',
             'icon' => 'icon-fa icon-fa-bar-chart',
+            'slug' => 'view.users',
             'children' => [
                 [
                     'title' => 'Chart JS',
                     'link' => '/admin/charts/chartjs',
                     'active' => 'admin/charts/chartjs',
+                    'slug' => 'view.users',
                 ],
                 [
                     'title' => 'Sparkline',
                     'link' => '/admin/charts/sparklines',
                     'active' => 'admin/charts/sparklines',
+                    'slug' => 'view.users',
                 ],
                 [
                     'title' => 'AM Charts',
                     'link' => '/admin/charts/amcharts',
                     'active' => 'admin/charts/amcharts',
+                    'slug' => 'view.users',
                 ],
                 [
                     'title' => 'Morris',
                     'link' => '/admin/charts/morris',
                     'active' => 'admin/charts/morris',
+                    'slug' => 'view.users',
                 ],
                 [
                     'title' => 'Gauges',
                     'link' => '/admin/charts/gauges',
                     'active' => 'admin/charts/gauges',
+                    'slug' => 'view.users',
                 ],
             ]
-        ],
-        [
-            'title' => 'Icons',
-            'link' => '#',
-            'active' => 'admin/icons*',
-            'icon' => 'icon-fa icon-fa-eye',
-            'children' => [
-                [
-                    'title' => 'IcoMoon',
-                    'link' => '/admin/icons/icomoon',
-                    'active' => 'admin/icons/icomoon',
-                ],
-                [
-                    'title' => 'Evil Icons',
-                    'link' => '/admin/icons/evil',
-                    'active' => 'admin/icons/evil',
-                ],
-                [
-                    'title' => 'Meteo Icons',
-                    'link' => '/admin/icons/meteo',
-                    'active' => 'admin/icons/meteo',
-                ],
-                [
-                    'title' => 'Line Icons',
-                    'link' => '/admin/icons/line',
-                    'active' => 'admin/icons/line',
-                ],
-                [
-                    'title' => 'FPS Line',
-                    'link' => '/admin/icons/fps-line',
-                    'active' => 'admin/icons/fps-line',
-                ],
-                [
-                    'title' => 'Font Awesome',
-                    'link' => '/admin/icons/fontawesome',
-                    'active' => 'admin/icons/fontawesome',
-                ],
-            ]
-        ],
-        [
-            'title' => 'Forms',
-            'link' => '#',
-            'active' => 'admin/forms*',
-            'icon' => 'icon-fa icon-fa-rocket',
-            'children' => [
-                [
-                    'title' => 'General Elements',
-                    'link' => '/admin/forms/general',
-                    'active' => 'admin/forms/general',
-                ],
-                [
-                    'title' => 'Advanced Elements',
-                    'link' => '/admin/forms/advanced',
-                    'active' => 'admin/forms/advanced',
-                ],
-                [
-                    'title' => 'Form Layouts',
-                    'link' => '/admin/forms/layouts',
-                    'active' => 'admin/forms/layouts',
-                ],
-                [
-                    'title' => 'Form Validation',
-                    'link' => '/admin/forms/validation',
-                    'active' => 'admin/forms/validation',
-                ],
-                [
-                    'title' => 'Form Wizard',
-                    'link' => '/admin/forms/wizards',
-                    'active' => 'admin/forms/wizards',
-                ],
-                [
-                    'title' => 'Form Wizard 2',
-                    'link' => '/admin/forms/wizards-2',
-                    'active' => 'admin/forms/wizards-2',
-                ],
-                [
-                    'title' => 'Form Wizard 3',
-                    'link' => '/admin/forms/wizards-3',
-                    'active' => 'admin/forms/wizards-3',
-                ],
-                [
-                    'title' => 'Editors',
-                    'link' => '/admin/forms/editors',
-                    'active' => 'admin/forms/editors',
-                ],
-            ]
-        ],
-        [
-            'title' => 'Gallery',
-            'link' => '#',
-            'active' => 'admin/gallery*',
-            'icon' => 'icon-fa icon-fa-image',
-            'children' => [
-                [
-                    'title' => 'Gallery Grid',
-                    'link' => '/admin/gallery/grid',
-                    'active' => 'admin/gallery/grid',
-                ],
-                [
-                    'title' => 'Gallery Masonry Grid',
-                    'link' => '/admin/gallery/masonry-grid',
-                    'active' => 'admin/gallery/masonry-grid',
-                ]
-            ]
-        ],
-        [
-            'title' => 'Pages',
-            'link' => '#',
-            'active' => 'admin/pages*',
-            'icon' => 'icon-fa icon-fa-file',
-            'children' => [
-                [
-                    'title' => 'Login',
-                    'link'  => '/login',
-                    'active' => 'login',
-                ],
-                [
-                    'title' => 'Login 2',
-                    'link'  => '/admin/login-2',
-                    'active' => 'admin/login-2',
-                ],
-                [
-                    'title' => 'Login 3',
-                    'link'  => '/admin/login-3',
-                    'active' => 'admin/login-3',
-                ],
-                [
-                    'title' => 'Register',
-                    'link' => '/register',
-                    'active' => 'register',
-                ],
-                [
-                    'title' => 'Register 2',
-                    'link' => '/admin/register-2',
-                    'active' => 'admin/register-2',
-                ],
-                [
-                    'title' => 'Register 3',
-                    'link' => '/admin/register-3',
-                    'active' => 'admin/register-3',
-                ],
-                [
-                    'title' => '404 Page',
-                    'link' => '/admin/404',
-                    'active' => 'admin/404',
-                ],
-                [
-                    'title' => 'Maintenance Page',
-                    'link' => '/admin/maintenance',
-                    'active' => 'admin/maintenance',
-                ],
-            ]
-        ],
-        [
-            'title' => 'Users',
-            'link' => '#',
-            'active' => 'admin/users*',
-            'icon' => 'icon-fa icon-fa-user',
-            'children' => [
-                [
-                    'title' => 'All Users',
-                    'link' => '/admin/users',
-                    'active' => 'admin/users',
-                ],
-                [
-                    'title' => 'User Profile',
-                    'link' => '/admin/users/1',
-                    'active' => 'admin/users/*',
-                ]
-            ]
-        ],
-        [
-            'title' => 'Todo App',
-            'link' => '/admin/todos',
-            'active' => 'admin/todos*',
-            'icon' => 'icon-fa icon-fa-check',
         ],
         [
             'title' => 'Settings',
             'link' => '#',
             'active' => 'admin/settings*',
             'icon' => 'icon-fa icon-fa-cogs',
+            'slug' => 'view.users',
             'children' => [
+                [
+                    'title' => 'Zones',
+                    'link' => '/admin/settings/zones',
+                    'active' => 'admin/settings/zones*',
+                    'slug' => 'view.zones',
+                ],
+                [
+                    'title' => 'Departments',
+                    'link' => '/admin/settings/departments',
+                    'active' => 'admin/settings/departments*',
+                    'slug' => 'view.departments',
+                ],
+                [
+                    'title' => 'Designations',
+                    'link' => '/admin/settings/designations',
+                    'active' => 'admin/settings/designations*',
+                    'slug' => 'view.designations',
+                ],
+                [
+                    'title' => 'countries',
+                    'link' => '/admin/settings/countries',
+                    'active' => 'admin/settings/countries*',
+                    'slug' => 'view.country',
+                ],
+                [
+                    'title' => 'State',
+                    'link' => '/admin/settings/states',
+                    'active' => 'admin/settings/states*',
+                    'slug' => 'view.state',
+                ],
+                [
+                    'title' => 'Local Government Areas',
+                    'link' => '/admin/settings/lgas',
+                    'active' => 'admin/settings/lgas*',
+                    'slug' => 'view.lga',
+                ],
                 [
                     'title' => 'Social',
                     'link' => '/admin/settings/social',
                     'active' => 'admin/settings/social',
+                    'slug' => 'view.users',
                 ],
                 [
                     'title' => 'Mail Driver',
                     'link' => 'admin/settings/mail',
                     'active' => 'admin/settings/mail*',
+                    'slug' => 'view.users',
                 ],
             ]
         ],
     ],
-
-    // HORIZONTAL MENU LAYOUT -  MENU
-
-    'horizontal' => [
-        [
-            'title' => 'Dashboard',
-            'link' => '#',
-            'active' => 'admin/dashboard*',
-            'icon' => 'icon-fa icon-fa-dashboard',
-            'children' => [
-                [
-                    'title' => 'Basic',
-                    'link' => '/admin/dashboard/basic',
-                    'active' => 'admin/dashboard/basic',
-                ],
-                [
-                    'title' => 'Ecommerce',
-                    'link' => '/admin/dashboard/ecommerce',
-                    'active' => 'admin/dashboard/ecommerce',
-                ],
-                [
-                    'title' => 'Finance',
-                    'link' => '/admin/dashboard/finance',
-                    'active' => 'admin/dashboard/finance',
-                ]
-            ]
-        ],
-        [
-            'title' => 'Layouts',
-            'link' => '#',
-            'active' => 'admin/layouts*',
-            'icon' => 'icon-fa icon-fa-th-large',
-            'children' => [
-                [
-                    'title' => 'Sidebar',
-                    'link' => '/admin/layouts/sidebar',
-                    'active' => 'admin/layouts/sidebar',
-                ],
-                [
-                    'title' => 'Icon Sidebar',
-                    'link' => '/admin/layouts/icon-sidebar',
-                    'active' => 'admin/layouts/icon-sidebar',
-                ],
-                [
-                    'title' => 'Horizontal Menu',
-                    'link' => '/admin/layouts/horizontal-menu',
-                    'active' => 'admin/layouts/horizontal-menu',
-                ],
-            ]
-        ],
-        [
-            'title' => 'Basic UI',
-            'link' => '#',
-            'active' => 'admin/basic-ui*',
-            'icon' => 'icon-fa icon-fa-star',
-            'children' => [
-                [
-                    'title' => 'Buttons',
-                    'link' => '/admin/basic-ui/buttons',
-                    'active' => 'admin/basic-ui/buttons',
-                ],
-                [
-                    'title' => 'Cards',
-                    'link' => '/admin/basic-ui/cards',
-                    'active' => 'admin/basic-ui/cards',
-                ],
-                [
-                    'title' => 'Tabs & Accordians',
-                    'link' => '/admin/basic-ui/tabs',
-                    'active' => 'admin/basic-ui/tabs',
-                ],
-                [
-                    'title' => 'Typography',
-                    'link' => '/admin/basic-ui/typography',
-                    'active' => 'admin/basic-ui/typography',
-                ],
-                [
-                    'title' => 'Tables',
-                    'link' => '/admin/basic-ui/tables',
-                    'active' => 'admin/basic-ui/tables',
-                ]
-            ]
-        ],
-        [
-            'title' => 'Components',
-            'link' => '#',
-            'active' => 'admin/components*',
-            'icon' => 'icon-fa icon-fa-puzzle-piece',
-            'children' => [
-                [
-                    'title' => 'Datatables',
-                    'link' => '/admin/components/datatables',
-                    'active' => 'admin/components/datatables',
-                ],
-                [
-                    'title' => 'Notifications',
-                    'link' => '/admin/components/notifications',
-                    'active' => 'admin/components/notifications',
-                ],
-                [
-                    'title'=>' Nestable List',
-                    'link'=>'/admin/components/nestable-list',
-                    'active'=>'admin/components/nestable-list',
-                ],
-                [
-                    'title'=>'Nestable Tree',
-                    'link'=>'/admin/components/nestable-tree',
-                    'active'=>'admin/components/nestable-tree',
-                ],
-                [
-                    'title' => 'Image Cropper',
-                    'link' => '/admin/components/image-cropper',
-                    'active' => 'admin/components/image-cropper',
-                ],
-                [
-                    'title' => 'Image Zoom',
-                    'link' => '/admin/components/zoom',
-                    'active' => 'admin/components/zoom',
-                ],
-                [
-                    'title' => 'Calendar',
-                    'link' => '/admin/components/calendar',
-                    'active' => 'admin/components/calendar',
-                ],
-                [
-                    'title' => 'Rating',
-                    'link' => '#',
-                    'active' => 'admin/components/ratings*',
-                    'icon' => 'icon-fa icon-fa-star',
-                    'children' => [
-                        [
-                            'title' => 'Star Ratings',
-                            'link' => '/admin/components/ratings/star',
-                            'active' => 'admin/components/ratings/star',
-                        ],
-                        [
-                            'title' => 'Bar Ratings',
-                            'link' => '/admin/components/ratings/bar',
-                            'active' => 'admin/components/ratings/bar',
-                        ],
-                    ],
-                ],
-            ]
-        ],
-        [
-            'title' => 'Todo App',
-            'link' => '/admin/todos',
-            'active' => 'admin/todos*',
-            'icon' => 'icon-fa icon-fa-check',
-        ],
-        [
-            'title' => 'Settings',
-            'link' => '#',
-            'active' => 'admin/settings*',
-            'icon' => 'icon-fa icon-fa-cogs',
-            'children' => [
-                [
-                    'title' => 'Social',
-                    'link' => '/admin/settings/social',
-                    'active' => 'admin/settings/social',
-                ],
-                [
-                    'title' => 'Mail',
-                    'link' => 'admin/settings/mail',
-                    'active' => 'admin/settings/mail*',
-                    'icon' => 'icon-fa icon-fa-mail',
-                ],
-            ]
-        ]
-    ]
 ];

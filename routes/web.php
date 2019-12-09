@@ -20,10 +20,19 @@ Route::get('/', [
 | To Enable Authentication just remove the comment from Admin Middleware
 |
 */
+Route::get('designations-fetch', 'EmployeeController@fetch')->name('designations.fetch');
+Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
+Route::get('lga-fetch', 'CustomerController@fetchLga')->name('lga.fetch');
+
+// Billing
+Route::group(['prefix' => 'api'], function () {
+    Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
+
+});
 
 Route::group([
     'prefix' => 'admin',
-//    'middleware' => 'admin'
+     'middleware' => 'admin'
 ], function () {
 
     // Dashboard
@@ -33,118 +42,9 @@ Route::group([
         'as' => 'admin.dashboard', 'uses' => 'DashboardController@index'
     ]);
 
-    Route::get('/dashboard/basic', [
-        'as' => 'admin.dashboard.basic', 'uses' => 'DashboardController@basic'
+    Route::get('/dashboard/', [
+        'as' => 'admin.dashboard', 'uses' => 'DashboardController@index'
     ]);
-
-    Route::get('/dashboard/ecommerce', [
-        'as' => 'admin.dashboard.ecommerce', 'uses' => 'DashboardController@ecommerce'
-    ]);
-
-    Route::get('/dashboard/finance', [
-        'as' => 'admin.dashboard.finance', 'uses' => 'DashboardController@finance'
-    ]);
-
-    // Layouts
-    //----------------------------------
-
-    Route::group(['prefix' => 'layouts'], function () {
-
-        Route::get('sidebar', [
-            'as' => 'admin.layouts.sidebar', 'uses' => 'Demo\PagesController@sidebarLayout'
-        ]);
-
-        Route::get('icon-sidebar', [
-            'as' => 'admin.layouts.icon-sidebar', 'uses' => 'Demo\PagesController@iconSidebar'
-        ]);
-
-        Route::get('horizontal-menu', [
-            'as' => 'admin.layouts.horizontal', 'uses' => 'Demo\PagesController@horizontalMenu'
-        ]);
-    });
-
-    // UI Elements
-    //----------------------------------
-
-    Route::group(['prefix' => 'basic-ui'], function () {
-
-        Route::get('buttons', [
-            'as' => 'admin.ui.buttons', 'uses' => 'Demo\PagesController@buttons'
-        ]);
-
-        Route::get('typography', [
-            'as' => 'admin.ui.typography', 'uses' => 'Demo\PagesController@typography'
-        ]);
-
-        Route::get('tabs', [
-            'as' => 'admin.ui.tabs', 'uses' => 'Demo\PagesController@tabs'
-        ]);
-
-        Route::get('cards', [
-            'as' => 'admin.ui.cards', 'uses' => 'Demo\PagesController@cards'
-        ]);
-
-        Route::get('tables', [
-            'as' => 'admin.ui.tables', 'uses' => 'Demo\PagesController@tables'
-        ]);
-
-        Route::get('modals', [
-            'as' => 'admin.ui.modals', 'uses' => 'Demo\PagesController@modals'
-        ]);
-
-        Route::get('progress-bars', [
-            'as' => 'admin.ui.progress-bars', 'uses' => 'Demo\PagesController@progressBars'
-        ]);
-    });
-
-    // Components
-    //----------------------------------
-
-    Route::group(['prefix' => 'components'], function () {
-
-        Route::get('notifications', [
-            'as' => 'admin.components.notifications', 'uses' => 'Demo\PagesController@notifications'
-        ]);
-
-        Route::get('datatables', [
-            'as' => 'admin.components.datatables', 'uses' => 'Demo\PagesController@datatables'
-        ]);
-
-        Route::get('nestable-list', [
-            'as'=>'admin.components.nestableList', 'uses'=>'Demo\PagesController@nestableList'
-        ]);
-
-        Route::get('nestable-tree', [
-            'as'=>'admin.components.nestableTree', 'uses'=>'Demo\PagesController@nestableTree'
-        ]);
-
-        Route::get('image-cropper', [
-            'as' => 'admin.components.imagecropper', 'uses' => 'Demo\PagesController@imageCropper'
-        ]);
-
-        Route::get('zoom', [
-            'as' => 'admin.components.zoom', 'uses' => 'Demo\PagesController@imageZoom'
-        ]);
-
-        Route::get('calendar', [
-            'as' => 'admin.components.calendar', 'uses' => 'Demo\PagesController@calendar'
-        ]);
-
-        Route::group(['prefix' => 'ratings'], function () {
-
-            Route::get('star', [
-                'as' => 'admin.components.ratings.star', 'uses' => 'Demo\PagesController@ratings'
-            ]);
-
-            Route::get('bar', [
-                'as' => 'admin.components.rating.bar', 'uses' => 'Demo\PagesController@barRatings'
-            ]);
-        });
-
-        Route::get('contacts', [
-            'as' => 'admin.components.contacts', 'uses' => 'Demo\PagesController@contacts'
-        ]);
-    });
 
     // Charts
     //----------------------------------
@@ -172,57 +72,6 @@ Route::group([
         ]);
     });
 
-    // Form Components
-    //----------------------------------
-
-    Route::group(['prefix' => 'forms'], function () {
-
-        Route::get('general', [
-            'as' => 'admin.forms.general', 'uses' => 'Demo\PagesController@general'
-        ]);
-
-        Route::get('advanced', [
-            'as' => 'admin.forms.advanced', 'uses' => 'Demo\PagesController@advanced'
-        ]);
-
-        Route::get('layouts', [
-            'as' => 'admin.forms.layouts', 'uses' => 'Demo\PagesController@layouts'
-        ]);
-
-        Route::get('validation', [
-            'as' => 'admin.forms.validation', 'uses' => 'Demo\PagesController@validation'
-        ]);
-
-        Route::get('editors', [
-            'as' => 'admin.forms.editors', 'uses' => 'Demo\PagesController@editors'
-        ]);
-
-        Route::get('wizards', [
-            'as' => 'admin.forms.wizards', 'uses' => 'Demo\PagesController@wizards'
-        ]);
-
-        Route::get('wizards-2', [
-            'as' => 'admin.forms.wizards2', 'uses' => 'Demo\PagesController@wizards2'
-        ]);
-
-        Route::get('wizards-3', [
-            'as' => 'admin.forms.wizards3', 'uses' => 'Demo\PagesController@wizards3'
-        ]);
-    });
-
-    // Gallery Components
-    //----------------------------------
-
-    Route::group(['prefix' => 'gallery'], function () {
-
-        Route::get('grid', [
-            'as' => 'admin.gallery.grid', 'uses' => 'Demo\PagesController@galleryGrid'
-        ]);
-
-        Route::get('masonry-grid', [
-            'as' => 'admin.gallery.masonry-grid', 'uses' => 'Demo\PagesController@galleryMasonryGrid'
-        ]);
-    });
 
     // Login, Register & Maintenance Pages
     //----------------------------------
@@ -247,75 +96,47 @@ Route::group([
         'as' => 'admin.maintenance', 'uses' => 'Demo\PagesController@maintenance'
     ]);
 
-    // Icon Preview Pages
-    //----------------------------------
+    Route::get('invoice', 'PDFController@pdfDownload')->name('invoice');
 
-    Route::group(['prefix' => 'icons'], function () {
 
-        Route::get('/icomoon', [
-            'as' => 'admin.icons.icomoon', 'uses' => 'Demo\PagesController@icoMoons'
-        ]);
-
-        Route::get('/evil', [
-            'as' => 'admin.icons.evil', 'uses' => 'Demo\PagesController@evilIcons'
-        ]);
-
-        Route::get('/meteo', [
-            'as' => 'admin.icons.meteo', 'uses' => 'Demo\PagesController@meteoIcons'
-        ]);
-
-        Route::get('/line', [
-            'as' => 'admin.icons.line', 'uses' => 'Demo\PagesController@lineIcons'
-        ]);
-
-        Route::get('/fps-line', [
-            'as' => 'admin.icons.fpsline', 'uses' => 'Demo\PagesController@fpsLineIcons'
-        ]);
-
-        Route::get('/fontawesome', [
-            'as' => 'admin.icons.fontawesome', 'uses' => 'Demo\PagesController@fontawesomeIcons'
-        ]);
+    // Users
+    Route::group(['prefix' => 'manage-users'], function () {
+        Route::resource('users', 'UsersController');
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController');
     });
 
-    // Todos
-    //----------------------------------
+    // Customers
+    Route::group(['prefix' => 'manage-customers'], function () {
+        Route::resource('customers', 'CustomerController');
+    });
 
-    Route::resource('todos', 'Demo\TodosController');
+    // Billing
+    Route::group(['prefix' => 'manage-payment'], function () {
+        Route::get('make-payment', 'PaymentController@index')->name('payment.index');
+        Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
+        Route::post('payment', 'PaymentController@makePayment')->name('payment.post');
+        Route::resource('billing', 'BillingController');
+        Route::get('generate-bill', 'BillingController@generateBill')->name('generate.bill');
+        Route::get('zones', 'ZoneController@getZones')->name('zones.fetch');
+        Route::get('get-bills', 'BillingController@billToPDF')->name('zones.fetch');
+        Route::resource('payment-type', 'PaymentTypeController');
 
-    Route::post('todos/toggleTodo/{id}', [
-        'as' => 'admin.todos.toggle', 'uses' => 'Demo\TodosController@toggleTodo'
-    ]);
+    });
 
-    Route::resource('users', 'UsersController');
 
     // Settings
     //----------------------------------
 
     Route::group(['prefix' => 'settings'], function () {
 
+        Route::resource('zones', 'ZoneController');
+        Route::resource('departments', 'DepartmentController');
+        Route::resource('designations', 'DesignationController');
+        Route::resource('countries', 'CountryController');
+        Route::resource('states', 'StateController');
+        Route::resource('lgas', 'LGAController');
 
-        Route::get('/social', [
-            'as' => 'admin.settings.index', 'uses' => 'SettingsController@index'
-        ]);
-
-        Route::post('/social', [
-            'as' => 'admin.settings.social', 'uses' => 'SettingsController@postSocial'
-        ]);
-
-        Route::group(['prefix' => 'mail'], function () {
-
-            Route::get('/', [
-                'as' => 'admin.settings.mail.index', 'uses' => 'SettingsController@mail'
-            ]);
-
-            Route::post('/', [
-                'as' => 'admin.settings.mail.post', 'uses' => 'SettingsController@postMail'
-            ]);
-
-            Route::post('/send-test-email', [
-                'as' => 'admin.settings.mail.send', 'uses' => 'SettingsController@sendTestMail'
-            ]);
-        });
     });
 });
 

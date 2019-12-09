@@ -1,9 +1,9 @@
 <header class="site-header">
-  <a href="#" class="brand-main">
-    <img src="{{asset('/assets/admin/img/logo-desk.png')}}" id="logo-desk" alt="Laraspace Logo" class="d-none d-md-inline ">
-    <img src="{{asset('/assets/admin/img/logo-mobile.png')}}" id="logo-mobile" alt="Laraspace Logo" class="d-md-none">
+  <a href="/" class="brand-main">
+    <h2 class="d-none d-md-inline ">S.I Comprehensive Global Nig. Ltd.</h2>
+    <h2 class="d-md-none">SICG</h2>
   </a>
-  <a href="#" class="nav-toggle">
+  <a href="/" class="nav-toggle">
     <div class="hamburger hamburger--htla">
       <span>toggle menu</span>
     </div>
@@ -28,7 +28,7 @@
         </div>
       </li>
       <li>
-        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{asset('/assets/admin/img/avatars/avatar.png')}}" alt="Avatar"></a>
+        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{asset('storage/'.Auth::user()->profile->image)}}" alt="Avatar"></a>
         <div class="dropdown-menu dropdown-menu-right notification-dropdown">
           <a class="dropdown-item" href="/admin/settings/social"><i class="icon-fa icon-fa-cogs"></i> Settings</a>
           <a class="dropdown-item" href="/logout"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>

@@ -10,7 +10,7 @@ class ForgotPasswordController extends Controller
 {
     public function __construct()
     {
-        $this->subject = "Laraspace password Reset";
+        $this->subject = "laraspace password Reset";
     }
 
     public function getEmail()

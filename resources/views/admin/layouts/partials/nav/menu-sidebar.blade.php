@@ -1,10 +1,12 @@
 <ul class="side-nav metismenu" id="menu">
     @foreach(config('menu.sidebar') as $menu)
+        @permission($menu['slug'])
         <li class="{{set_active($menu['active'],'active')}}">
             <a href="{{url($menu['link'])}}"><i class="{{$menu['icon']}}"></i> {{$menu['title']}} @if(isset($menu['children']))<span class="icon-fa arrow icon-fa-fw"></span> @endif</a>
             @if(isset($menu['children']))
                 <ul aria-expanded="true" class="collapse">
                     @foreach($menu['children'] as $child)
+                        @permission($child['slug'])
                         <li class="{{set_active($child['active'],'active')}}">
                             <a href="{{url($child['link'])}}">{{$child['title']}}@if(isset($child['children']))<span class="icon-fa arrow icon-fa-fw"></span> @endif</a>
                             @if(isset($child['children']))
@@ -15,9 +17,11 @@
                                 </ul>
                             @endif
                         </li>
+                        @endpermission
                     @endforeach
                 </ul>
             @endif
         </li>
+        @endpermission
     @endforeach
 </ul>

@@ -14,7 +14,9 @@
         "laravel/framework": "5.8.*",
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "jeremykenedy/laravel-roles": "^2.3",
+        "barryvdh/laravel-dompdf": "^0.8.5"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",

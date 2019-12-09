@@ -7,16 +7,37 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', 'user')->get();
+        $users = User::all();
 
         return view('admin.users.index')->with('users', $users);
     }
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('roles')->where('id', $id)->first();
 
         return view('admin.users.show')->with('user', $user);
+    }
+
+    public function store()
+    {
+        $user = User::findOrFail(1);
+
+        return view('admin.users.store')->with('user', $user);
+    }
+
+    public function create()
+    {
+        $user = User::findOrFail(1);
+
+        return view('admin.users.store')->with('user', $user);
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit')->with('user', $user);
     }
 
     public function destroy($id)

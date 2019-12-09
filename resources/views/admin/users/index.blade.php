@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item active">Users</li>
             </ol>
             <div class="page-actions">
-                <a href="#" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New User</a>
+                <a href="{{route('users.create')}}" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New User</a>
                 <button class="btn btn-danger"><i class="icon-fa icon-fa-trash"></i> Delete </button>
             </div>
         </div>
@@ -46,6 +46,7 @@
                                 <td>{{$user->role}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td><a href="{{route('users.show',$user->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-search"></i> View</a>
+                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-edit"></i> Edit</a>
                                     <a href="{{route('users.destroy',$user->id)}}" class="btn btn-default btn-sm" data-token="{{csrf_token()}}" data-delete data-confirmation="notie"> <i class="icon-fa icon-fa-trash"></i> Delete</a></td>
                             </tr>
                             @endforeach

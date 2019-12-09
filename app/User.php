@@ -3,10 +3,12 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +30,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return ($this->role == 'admin');
+        return ($this->role == 'admin' || $this->role == 'payer');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Employee::class);
     }
 
     public static function login($request)

@@ -73,7 +73,7 @@ mix.combine([
   pluginPath + 'icons/evil.js',
   pluginPath + 'ace-editor/twilight.js',
 
-  // ** Laraspace Inits **
+  // ** laraspace Inits **
   pluginPath + 'laraspace/laraspace-layout.js',
   pluginPath + 'laraspace/laraspace-notifs.js',
   pluginPath + 'laraspace/laraspace-forms.js'

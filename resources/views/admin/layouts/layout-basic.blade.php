@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laraspace - Laravel Admin</title>
+    <title>SeedBreed - Academy Admin</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <script src="{{asset('/assets/admin/js/core/pace.js')}}"></script>
     <link href="{{ mix('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">
@@ -12,7 +12,7 @@
     @include('admin.layouts.partials.favicons')
     @yield('styles')
 </head>
-<body class="layout-default skin-default">
+<body class="layout-default skin-stark">
     @include('admin.layouts.partials.laraspace-notifs')
 
     <div id="app" class="site-wrapper">
