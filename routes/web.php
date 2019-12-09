@@ -32,7 +32,7 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::group([
     'prefix' => 'admin',
-     'middleware' => 'admin'
+     //'middleware' => 'admin'
 ], function () {
 
     // Dashboard
