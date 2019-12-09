@@ -25,7 +25,7 @@
         </div>
         <div class="content-box">
             <h1><b>Headstart</b> Manage your <br>
-                System with ease.
+                Store with ease.
             </h1>
         </div>
     </div>
