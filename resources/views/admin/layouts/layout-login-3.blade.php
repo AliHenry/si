@@ -14,12 +14,12 @@
             <div class="box-wrapper">
                 @include('admin.layouts.partials.laraspace-notifs')
                 <div class="logo-main">
-                    <a href="/"><img src="/assets/admin/img/water-logo.jpg" alt="Laraspace Logo"></a>
+                    <a href="/"><img src="/assets/admin/img/si-logo.png" alt="Laraspace Logo"></a>
                 </div>
                 @yield('content')
                 <div class="page-copyright">
                     <p>Powered by <a href="http://bytefury.com" target="_blank">Geealee Soft</a></p>
-                    <p>Bauchi State Water Board © {{ date('Y') }}</p>
+                    <p>S. I Comprehensive © {{ date('Y') }}</p>
                 </div>
             </div>
         </div>
