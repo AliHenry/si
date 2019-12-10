@@ -46,31 +46,6 @@ Route::group([
         'as' => 'admin.dashboard', 'uses' => 'DashboardController@index'
     ]);
 
-    // Charts
-    //----------------------------------
-
-    Route::group(['prefix' => 'charts'], function () {
-
-        Route::get('chartjs', [
-            'as' => 'admin.charts.chartjs', 'uses' => 'Demo\PagesController@chartjs'
-        ]);
-
-        Route::get('sparklines', [
-            'as' => 'admin.charts.sparklines', 'uses' => 'Demo\PagesController@sparklineCharts'
-        ]);
-
-        Route::get('amcharts', [
-            'as' => 'admin.charts.amcharts', 'uses' => 'Demo\PagesController@amCharts'
-        ]);
-
-        Route::get('morris', [
-            'as' => 'admin.charts.morris', 'uses' => 'Demo\PagesController@morrisCharts'
-        ]);
-
-        Route::get('gauges', [
-            'as' => 'admin.charts.gauges', 'uses' => 'Demo\PagesController@gaugeCharts'
-        ]);
-    });
 
 
     // Login, Register & Maintenance Pages
@@ -96,8 +71,6 @@ Route::group([
         'as' => 'admin.maintenance', 'uses' => 'Demo\PagesController@maintenance'
     ]);
 
-    Route::get('invoice', 'PDFController@pdfDownload')->name('invoice');
-
 
     // Users
     Route::group(['prefix' => 'manage-users'], function () {
@@ -112,17 +85,17 @@ Route::group([
     });
 
     // Billing
-    Route::group(['prefix' => 'manage-payment'], function () {
-        Route::get('make-payment', 'PaymentController@index')->name('payment.index');
-        Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
-        Route::post('payment', 'PaymentController@makePayment')->name('payment.post');
-        Route::resource('billing', 'BillingController');
-        Route::get('generate-bill', 'BillingController@generateBill')->name('generate.bill');
-        Route::get('zones', 'ZoneController@getZones')->name('zones.fetch');
-        Route::get('get-bills', 'BillingController@billToPDF')->name('zones.fetch');
-        Route::resource('payment-type', 'PaymentTypeController');
-
-    });
+//    Route::group(['prefix' => 'manage-payment'], function () {
+//        Route::get('make-payment', 'PaymentController@index')->name('payment.index');
+//        Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
+//        Route::post('payment', 'PaymentController@makePayment')->name('payment.post');
+//        Route::resource('billing', 'BillingController');
+//        Route::get('generate-bill', 'BillingController@generateBill')->name('generate.bill');
+//        Route::get('zones', 'ZoneController@getZones')->name('zones.fetch');
+//        Route::get('get-bills', 'BillingController@billToPDF')->name('zones.fetch');
+//        Route::resource('payment-type', 'PaymentTypeController');
+//
+//    });
 
 
     // Settings
