@@ -15,7 +15,6 @@ class DashboardController extends Controller
     {
         $employeesCount = Employee::count();
         $customersCount = Customer::count();
-        $zonesCount = Zone::count();
         $activeBillingCount = Customer::where('active', 1)->count();
         $arrears = Billing::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->subMonth())->sum('arrears');
         $revenue = Billing::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->subMonth())->sum('paid_amount');
@@ -54,7 +53,6 @@ class DashboardController extends Controller
             'revenueMonthlyAmount' => $revenueMonthlyAmount,
             'days' => $days,
             'revenueDaysAmount' => $revenueDaysAmount,
-            'zonesCount' => $zonesCount,
             'activeBillingCount' => $activeBillingCount
 
         ]);

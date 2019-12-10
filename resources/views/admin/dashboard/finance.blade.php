@@ -29,7 +29,7 @@
                 <a class="dashbox" href="#">
                     <i class="icon-fa icon-fa-shopping-cart text-danger"></i>
                     <span class="title">
-                      {{$zonesCount}}
+                      200
                     </span>
                     <span class="desc">
                       Zones
