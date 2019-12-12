@@ -1,7 +1,7 @@
 
 <header class="site-header">
-  <a href="#" class="brand-main">
-    <img src="{{asset('/assets/admin/img/logo-desk.png')}}" id="logo-desk" alt="Laraspace Logo" class="hidden-sm-down">
+  <a href="/">
+    <img height="90" src="{{asset('/assets/admin/img/si-logo.png')}}" id="logo-desk" alt="Laraspace Logo" class="hidden-sm-down">
   </a>
 
   <ul class="action-list">
