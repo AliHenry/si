@@ -53,23 +53,23 @@ var Users = (function () {
 
     });
 
-    $('#state').on('change', function (e) {
-        var state_id = e.target.value;
-        var url = $(this).data('url');
-        $.get(url+'?state_id=' +state_id, function (data) {
-            console.log('its changed');
-            console.log(data);
-            // $('#designation').empty();
-            //
-            // $('#designation').append('<option value="null" disable="true" selected="true"> -- select designation -- </option>');
-            //
-            // $.each(data, function (index, designationObj) {
-            //     $('#designation').append('<option value="'+designationObj.id+'"> '+designationObj.name+' </option>');
-            // })
-        })
-
-
-    });
+    // $('#state').on('change', function (e) {
+    //     var state_id = e.target.value;
+    //     var url = $(this).data('url');
+    //     $.get(url+'?state_id=' +state_id, function (data) {
+    //         console.log('its changed');
+    //         console.log(data);
+    //         // $('#designation').empty();
+    //         //
+    //         // $('#designation').append('<option value="null" disable="true" selected="true"> -- select designation -- </option>');
+    //         //
+    //         // $.each(data, function (index, designationObj) {
+    //         //     $('#designation').append('<option value="'+designationObj.id+'"> '+designationObj.name+' </option>');
+    //         // })
+    //     })
+    //
+    //
+    // });
 
     // $('#stateE').on('change', function (e) {
     //     var state_id = e.target.value;

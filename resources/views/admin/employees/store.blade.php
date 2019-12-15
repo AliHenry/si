@@ -2,6 +2,7 @@
 
 @section('scripts')
     <script src="/assets/admin/js/employees/employees.js"></script>
+    <script src="/assets/admin/js/employees/employees2.js"></script>
 @stop
 
 @section('content')
@@ -95,18 +96,12 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">State</label>
-                                        <select name="state_id" id="state" data-dependent="state" data-url="{{route('designations.fetch')}}" class="form-control ls-select2">
+                                        <select name="state_id" id="state"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">
                                             <option value="{{null}}"> -- select state -- </option>
                                             @foreach($states as $state)
                                                 <option value="{{$state->id}}">{{$state->name}}</option>
                                             @endforeach
                                         </select>
-{{--                                        <select name="state_id" id="stateE"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">--}}
-{{--                                            <option value="{{null}}"> -- select state -- </option>--}}
-{{--                                            @foreach($states as $state)--}}
-{{--                                                <option value="{{$state->id}}">{{$state->name}}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">LGA</label>
@@ -118,7 +113,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">User</label>
-                                        <select name="user_id" id="designation" class="form-control ls-select2">
+                                        <select name="user_id" id="user" class="form-control ls-select2">
                                             <option value="{{null}}"> -- select user -- </option>
                                             @foreach($users as $user)
                                                 <option value="{{$user->id}}">{{$user->name}}</option>
