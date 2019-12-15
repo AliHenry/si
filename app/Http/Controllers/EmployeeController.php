@@ -20,7 +20,10 @@ class EmployeeController extends Controller
     public function index()
     {
 
+        //$employees = Employee::with(['department', 'designation'])->get();
+
         $employees = Employee::with(['department', 'designation'])->get();
+
 
         return view('admin.employees.index')->with('employees', $employees);
     }

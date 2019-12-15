@@ -79,6 +79,12 @@ Route::group([
         Route::resource('permissions', 'PermissionsController');
     });
 
+    // Employees
+    Route::group(['prefix' => 'manage-employees'], function () {
+        Route::resource('employees', 'EmployeeController');
+        Route::resource('attendance', 'AttendanceController');
+    });
+
     // Customers
     Route::group(['prefix' => 'manage-customers'], function () {
         Route::resource('customers', 'CustomerController');
