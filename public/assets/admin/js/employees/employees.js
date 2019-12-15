@@ -57,6 +57,7 @@ var Users = (function () {
         var state_id = e.target.value;
         var url = $(this).data('url');
         $.get(url+'?state_id=' +state_id, function (data) {
+            console.log('its changed');
             console.log(data);
             $('#lga').empty();
 
