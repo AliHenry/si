@@ -53,7 +53,7 @@ var Users = (function () {
 
     });
 
-    $('#state').on('change', function (e) {
+    $('#stateE').on('change', function (e) {
         var state_id = e.target.value;
         var url = $(this).data('url');
         $.get(url+'?state_id=' +state_id, function (data) {

@@ -95,7 +95,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">State</label>
-                                        <select name="state_id" id="state"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">
+                                        <select name="state_id" id="stateE"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">
                                             <option value="{{null}}"> -- select state -- </option>
                                             @foreach($states as $state)
                                                 <option value="{{$state->id}}">{{$state->name}}</option>
