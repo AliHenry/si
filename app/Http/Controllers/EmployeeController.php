@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Designation;
 use App\Employee;
+use App\State;
 use App\User;
 use Carbon\Carbon;
 use http\Env\Response;
@@ -19,8 +20,6 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-
-        //$employees = Employee::with(['department', 'designation'])->get();
 
         $employees = Employee::with(['department', 'designation'])->get();
 
@@ -37,11 +36,13 @@ class EmployeeController extends Controller
 
     public function create()
     {
+        $states = State::all();
         $departments = Department::all();
         $users = User::all();
         return view('admin.employees.store')->with([
             'departments' => $departments,
             'users' => $users,
+            'states' => $states,
         ]);
     }
 
@@ -58,7 +59,8 @@ class EmployeeController extends Controller
             'user_id' => 'required|string|max:255|unique:employees',
             'date_of_birth' => 'required|date',
             'join_date' => 'required|date',
-            'state' => 'required|string|max:255',
+            'state_id' => 'required|string|max:255',
+            'lga_id' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'avatar' => 'sometimes|max:2000|mimes:jpeg,jpg,png',
@@ -84,9 +86,11 @@ class EmployeeController extends Controller
         $employee->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
         $employee->join_date = Carbon::parse($request->join_date)->format('Y-m-d');
         $employee->address = $request->address;
-        $employee->state = $request->state;
         $employee->dept_id = $request->department;
         $employee->job_type = $request->designation;
+        $employee->country_id = 1;
+        $employee->state_id = $request->state_id;
+        $employee->lga_id = $request->lga_id;
         $employee->image = uploadImage($request);
 
 

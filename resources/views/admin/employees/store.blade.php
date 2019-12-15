@@ -94,10 +94,22 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputFirstName">State</label>
-                                        <input type="text" class="form-control" name="state" id="inputFirstName"
-                                               placeholder="State">
+                                        <label for="exampleInputEmail">State</label>
+                                        <select name="state_id" id="state"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">
+                                            <option value="{{null}}"> -- select state -- </option>
+                                            @foreach($states as $state)
+                                                <option value="{{$state->id}}">{{$state->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail">LGA</label>
+                                        <select name="lga_id" id="lga" class="form-control ls-select2">
+                                            <option value="{{null}}"> -- select LGA -- </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">User</label>
                                         <select name="user_id" id="designation" class="form-control ls-select2">
@@ -107,8 +119,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlFile1">Image</label>
                                         <input type="file" class="form-control-file" name="avatar" id="exampleFormControlFile1">

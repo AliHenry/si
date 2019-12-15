@@ -6,6 +6,8 @@ use jeremykenedy\LaravelRoles\Models\Role;
 use App\Attendance;
 use App\Customer;
 use App\Billing;
+use App\Employee;
+
 
 
 function set_active($path, $active = 'active')
