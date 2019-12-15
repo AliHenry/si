@@ -36,22 +36,22 @@ var Users = (function () {
     }
 
 
-    $('#department').on('change', function (e) {
-        var dept_id = e.target.value;
-        var url = $(this).data('url');
-        $.get(url+'?dept_id=' +dept_id, function (data) {
-            console.log(data);
-            $('#designation').empty();
-
-            $('#designation').append('<option value="null" disable="true" selected="true"> -- select designation -- </option>');
-
-            $.each(data, function (index, designationObj) {
-                $('#designation').append('<option value="'+designationObj.id+'"> '+designationObj.name+' </option>');
-            })
-        })
-
-
-    });
+    // $('#department').on('change', function (e) {
+    //     var dept_id = e.target.value;
+    //     var url = $(this).data('url');
+    //     $.get(url+'?dept_id=' +dept_id, function (data) {
+    //         console.log(data);
+    //         $('#designation').empty();
+    //
+    //         $('#designation').append('<option value="null" disable="true" selected="true"> -- select designation -- </option>');
+    //
+    //         $.each(data, function (index, designationObj) {
+    //             $('#designation').append('<option value="'+designationObj.id+'"> '+designationObj.name+' </option>');
+    //         })
+    //     })
+    //
+    //
+    // });
 
     $('#stateE').on('change', function (e) {
         var state_id = e.target.value;
