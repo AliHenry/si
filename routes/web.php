@@ -22,7 +22,7 @@ Route::get('/', [
 */
 Route::get('designations-fetch', 'EmployeeController@fetch')->name('designations.fetch');
 Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
-Route::get('lga-fetch', 'CustomerController@fetchLga')->name('lga.fetch');
+Route::get('lga-fetch', 'EmployeeController@fetchLga')->name('lga.fetch');
 
 // Billing
 Route::group(['prefix' => 'api'], function () {

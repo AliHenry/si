@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Designation;
 use App\Employee;
+use App\LGA;
 use App\State;
 use App\User;
 use Carbon\Carbon;
@@ -192,6 +193,14 @@ class EmployeeController extends Controller
     {
         $value = Input::get('dept_id');
         $data = Designation::where('dept_id', $value)->get();
+        return response()->json($data);
+
+    }
+
+    public function fetchLga()
+    {
+        $value = Input::get('state_id');
+        $data = LGA::where('state_id', $value)->get();
         return response()->json($data);
 
     }
