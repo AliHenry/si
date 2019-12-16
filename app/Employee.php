@@ -25,4 +25,14 @@ class Employee extends Model
     {
         return $this->belongsToMany(Attendance::class, 'attendance_employees', 'emp_id', 'attend_id')->withPivot('type');;
     }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
+
+    public function lga()
+    {
+        return $this->belongsTo(LGA::class, 'lga_id');
+    }
 }

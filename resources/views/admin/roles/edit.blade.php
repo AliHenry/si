@@ -154,9 +154,9 @@
                                     </div>
                                     <hr>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>Manage Payment Type</strong></label>
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Categories</strong></label>
                                         @foreach($permissions as $permission)
-                                            @if($permission->type === 'payment-types')
+                                            @if($permission->type === 'categories')
                                                 <div class="col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">

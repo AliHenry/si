@@ -61,7 +61,7 @@
                                                 <div class="col-sm-6">
                                                     <h3 class="section-semi-title">Employee Origin</h3>
                                                     <ul class="media-list activity-list">
-                                                        <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->state.', '.$employee->lga}}</p>
+                                                        <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->state->name.', '.$employee->lga->name}}</p>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-6">

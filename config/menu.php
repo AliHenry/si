@@ -78,6 +78,21 @@ return [
             ]
         ],
         [
+            'title' => 'Store',
+            'link' => '#',
+            'active' => 'admin/manage-store*',
+            'slug' => 'view.categories',
+            'icon' => 'icon-fa icon-fa-th-large',
+            'children' => [
+                [
+                    'title' => 'Category',
+                    'link' => '/admin/manage-store/categories',
+                    'active' => 'admin/manage-store/categories*',
+                    'slug' => 'view.categories',
+                ],
+            ]
+        ],
+        [
             'title' => 'Customers',
             'link' => '#',
             'active' => 'admin/manage-customers*',

@@ -90,6 +90,11 @@ Route::group([
         Route::resource('customers', 'CustomerController');
     });
 
+    // Customers
+    Route::group(['prefix' => 'manage-store'], function () {
+        Route::resource('categories', 'CategoryController');
+    });
+
     // Billing
 //    Route::group(['prefix' => 'manage-payment'], function () {
 //        Route::get('make-payment', 'PaymentController@index')->name('payment.index');

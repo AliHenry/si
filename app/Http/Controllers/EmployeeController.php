@@ -108,16 +108,20 @@ class EmployeeController extends Controller
 
     public function edit($id)
     {
-        $employee = Employee::with(['department', 'designation', 'user'] )->where('id', $id)->first();
+        $employee = Employee::with(['department', 'designation', 'user', 'state', 'lga'] )->where('id', $id)->first();
         $designation = Designation::all();
         $departments = Department::all();
+        $states = State::all();
         $users = User::all();
+        $lgas = LGA::all();
 
         return view('admin.employees.edit')->with([
             'designation' => $designation,
             'departments' => $departments,
             'employee' => $employee,
-            'users' => $users
+            'users' => $users,
+            'states' => $states,
+            'lgas' => $lgas,
         ]);
     }
 
@@ -134,7 +138,8 @@ class EmployeeController extends Controller
             'user_id' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'join_date' => 'required|date',
-            'state' => 'required|string|max:255',
+            'state_id' => 'required|string|max:255',
+            'lga_id' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'avatar' => 'sometimes|max:2000|mimes:jpeg,jpg,png',
@@ -157,7 +162,8 @@ class EmployeeController extends Controller
         $employee->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
         $employee->join_date = Carbon::parse($request->join_date)->format('Y-m-d');
         $employee->address = $request->address;
-        $employee->state = $request->state;
+        $employee->state_id = $request->state_id;
+        $employee->lga_id = $request->lga_id;
         $employee->dept_id = $request->department;
         $employee->job_type = $request->designation;
 

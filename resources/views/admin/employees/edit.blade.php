@@ -2,6 +2,7 @@
 
 @section('scripts')
     <script src="/assets/admin/js/employees/employees.js"></script>
+    <script src="/assets/admin/js/employees/employees2.js"></script>
 @stop
 
 @section('content')
@@ -97,10 +98,22 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputFirstName">State</label>
-                                        <input type="text" class="form-control" name="state" id="inputFirstName"
-                                               placeholder="State" value="{{$employee->state}}">
+                                        <label for="exampleInputEmail">State</label>
+                                        <select name="state_id" id="state"  data-url="{{route('lga.fetch')}}" class="form-control ls-select2">
+                                            <option value="{{null}}"> -- select state -- </option>
+                                            @foreach($states as $state)
+                                                <option value="{{$state->id}}" {{$state->id == $employee->state_id ? 'selected' : ''}}>{{$state->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail">LGA</label>
+                                        <select name="lga_id" id="lga" class="form-control ls-select2">
+                                            <option value="{{$employee->lga_id}}">{{$employee->lga->name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail">User</label>
                                         <select name="user_id" id="designation" class="form-control ls-select2">
