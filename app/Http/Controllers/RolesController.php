@@ -56,7 +56,7 @@ class RolesController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.store')->with('permissions', $permissions);
+        return view('admin.roles.zzzz')->with('permissions', $permissions);
     }
 
     public function edit($id)
