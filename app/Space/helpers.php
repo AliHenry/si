@@ -7,6 +7,9 @@ use App\Attendance;
 use App\Customer;
 use App\Billing;
 use App\Employee;
+use App\Product;
+use App\Category;
+
 
 
 
@@ -69,6 +72,71 @@ function getNextEmployeeNumber()
         $number = substr($lastEmployee->code, $numberOfStripOutLetter);
 
     return $codePrefix. '' . sprintf('%04d', intval($number) + $interValNumber);
+}
+
+function productSlug($phrase){
+
+    $show = Str::slug($phrase, '-');
+
+    $slugExist = Product::where('slug', $show)->first();
+
+    if ($slugExist) {
+        $pieces = explode('-', $slugExist->slug);
+
+        $number = intval(end($pieces));
+
+        $show .= '-' . ($number + 1);
+    }
+
+    return $show;
+}
+
+function categorySlug($phrase){
+
+    $show = Str::slug($phrase, '-');
+
+    $slugExist = Category::where('slug', $show)->first();
+
+    if ($slugExist) {
+        $pieces = explode('-', $slugExist->slug);
+
+        $number = intval(end($pieces));
+
+        $show .= '-' . ($number + 1);
+    }
+
+    return $show;
+}
+
+function productImage($path){
+    return $path && file_exists('storage/'.$path) ? asset('storage/'.$path) : asset('assets/admin/img/noimg.jpeg');
+}
+
+function priceFormat($price){
+    return '₦ '.$price;
+}
+
+function truncDescription($description){
+    return Str::words($description, 3, '...');
+}
+
+function getNextProductNumber()
+{
+    $interValNumber = 1;
+
+    $numberOfStripOutLetter = 4;
+
+    $codePrefix = 'PROD';
+
+    $lastProduct = Product::orderBy('created_at', 'desc')->first();
+
+    if ( ! $lastProduct )
+
+        $number = 0;
+    else
+        $number = substr($lastProduct->code, $numberOfStripOutLetter);
+
+    return $codePrefix. '' . sprintf('%010d', intval($number) + $interValNumber);
 }
 
 function getNextCustomerNumber()

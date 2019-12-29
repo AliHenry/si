@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->name = $request->name;
-        $category->slug = strtolower($request->name);
+        $category->slug = categorySlug($request->name);
         $category->parent_id = $request->parent_id ? $request->parent_id : 0;
 
         if ($category->save()) {

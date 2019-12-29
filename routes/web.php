@@ -93,6 +93,7 @@ Route::group([
     // Customers
     Route::group(['prefix' => 'manage-store'], function () {
         Route::resource('categories', 'CategoryController');
+        Route::resource('products', 'ProductController');
     });
 
     // Billing

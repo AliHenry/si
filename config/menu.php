@@ -90,6 +90,12 @@ return [
                     'active' => 'admin/manage-store/categories*',
                     'slug' => 'view.categories',
                 ],
+                [
+                    'title' => 'Product',
+                    'link' => '/admin/manage-store/products',
+                    'active' => 'admin/manage-store/products*',
+                    'slug' => 'view.products',
+                ],
             ]
         ],
         [
