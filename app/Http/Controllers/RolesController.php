@@ -82,12 +82,11 @@ class RolesController extends Controller
 
         $role = Role::findOrFail($id);
         $role->name = $request->name;
-        $role->slug = strtolower($request->name);
+        //$role->slug = strtolower($request->name);
         $role->description = $request->description;
 
 
         if ($role->save()) {
-
 
             $role->syncPermissions($request->permissions);
 
