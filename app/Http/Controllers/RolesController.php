@@ -86,15 +86,12 @@ class RolesController extends Controller
         $role->description = $request->description;
 
 
-        return response()->json($request->all());
-
         if ($role->save()) {
 
-            return response()->json($request->permissions);
 
-//            $role->syncPermissions($request->permissions);
-//
-//            flash('Successfully created')->success();
+            $role->syncPermissions($request->permissions);
+
+            flash('Successfully created')->success();
 
             return redirect()->route('roles.index');
         }
