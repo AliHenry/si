@@ -73,6 +73,15 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail">Brand</label>
+                                        <select name="brand_id" class="form-control ls-select2">
+                                            <option value="{{null}}"> -- select brand -- </option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="form-row">

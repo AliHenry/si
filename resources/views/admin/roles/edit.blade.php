@@ -190,6 +190,24 @@
                                     </div>
                                     <hr>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Brands</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'brands')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                                   @if($role->permissions->contains($permission)) checked @endif>{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label"><strong>Manage Zones</strong></label>
                                         @foreach($permissions as $permission)
                                             @if($permission->type === 'zones')

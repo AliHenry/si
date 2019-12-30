@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category', 'brand')->get();
 
         return view('admin.products.index')->with('products', $products);
     }
@@ -28,8 +28,12 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $brands = Brand::all();
 
-        return view('admin.products.store')->with('categories', $categories);
+        return view('admin.products.store')->with([
+            'categories' => $categories,
+            'brands' => $brands
+        ]);
     }
 
     /**
@@ -48,6 +52,7 @@ class ProductController extends Controller
             'discount' => 'nullable|string',
             'limit' => 'nullable|string|max:255',
             'cate_id' => 'required|string|max:255',
+            'brand_id' => 'nullable|string|max:255',
             'featured' => 'sometimes|string',
             'avatar' => 'sometimes|max:2000|mimes:jpeg,jpg,png',
             [
@@ -67,6 +72,7 @@ class ProductController extends Controller
         $product->qty = $request->qty;
         $product->limit = $request->limit;
         $product->cate_id = $request->cate_id;
+        $product->brand_id = $request->brand_id;
         $product->featured = $request->featured && $request->featured === 'on' ? true : false ;
         $product->image = uploadImage($request);
 
@@ -89,7 +95,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('category')->where('id', $id)->first();
+        $product = Product::with('category', 'brand')->where('id', $id)->first();
 
         return view('admin.products.show')->with('product', $product);
     }
@@ -103,10 +109,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
+        $brands = Brand::all();
 
         return view('admin.products.edit')->with([
             'product' => $product,
-            'categories' => $categories
+            'categories' => $categories,
+            'brands' => $brands
         ]);
     }
 
@@ -128,6 +136,7 @@ class ProductController extends Controller
             'discount' => 'nullable|string',
             'limit' => 'nullable|string|max:255',
             'cate_id' => 'required|string|max:255',
+            'brand_id' => 'nullable|string|max:255',
             'featured' => 'sometimes|string',
             'avatar' => 'sometimes|max:2000|mimes:jpeg,jpg,png',
             [
@@ -147,6 +156,7 @@ class ProductController extends Controller
         $product->qty = $request->qty;
         $product->limit = $request->limit;
         $product->cate_id = $request->cate_id;
+        $product->brand_id = $request->brand_id;
         $product->featured = $request->featured && $request->featured === 'on' ? true : false ;
 
         if ($request->has('avatar')){
@@ -172,6 +182,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        flash('Role Deleted')->success();
+
+        return redirect()->back();
     }
 }

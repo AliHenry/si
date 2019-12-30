@@ -43,6 +43,7 @@
                                 <th>Category</th>
                                 <th>Qty</th>
                                 <th>Price</th>
+                                <th>Brand</th>
                                 <th>Measure</th>
                                 <th>Actions</th>
                             </tr>
@@ -56,6 +57,7 @@
                                 <td>{{$product->category->name}}</td>
                                 <td>{{$product->qty}}</td>
                                 <td>{{$product->price}}</td>
+                                <td>{{$product->brand ? $product->brand->name : 'none'}}</td>
                                 <td>{{$product->measure}}</td>
                                 <td>
                                     @permission('edit.products')

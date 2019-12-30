@@ -96,6 +96,12 @@ return [
                     'active' => 'admin/manage-store/products*',
                     'slug' => 'view.products',
                 ],
+                [
+                    'title' => 'Brand',
+                    'link' => '/admin/manage-store/brands',
+                    'active' => 'admin/manage-store/brands*',
+                    'slug' => 'view.brands',
+                ],
             ]
         ],
         [

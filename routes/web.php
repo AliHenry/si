@@ -94,6 +94,7 @@ Route::group([
     Route::group(['prefix' => 'manage-store'], function () {
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
+        Route::resource('brands', 'BrandController');
     });
 
     // Billing
