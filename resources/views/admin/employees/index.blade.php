@@ -51,7 +51,7 @@
                             </thead>
                             @foreach($employees as $employee)
                             <tr>
-                                <td><img height="50" src="{{asset('storage/'.$employee->image)}}" alt="{{$employee->first_name}}"></td>
+                                <td><img height="50" src="{{productImage($employee->image)}}" alt="{{$employee->first_name}}"></td>
                                 <td>{{$employee->code}}</td>
                                 <td>{{$employee->first_name. ' '. $employee->middle_name. ' '. $employee->last_name}}</td>
                                 <td>{{$employee->gender}}</td>

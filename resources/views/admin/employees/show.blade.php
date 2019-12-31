@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="avatar-container">
-                                                <img src="{{asset('storage/'.$employee->image)}}" alt="{{$employee->first_name}}" class="img-fluid">
+                                                <img src="{{productImage($employee->image)}}" alt="{{$employee->first_name}}" class="img-fluid">
                                             </div>
                                         </div>
                                         <div class="col-sm-9">

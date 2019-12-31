@@ -1,13 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Brand;
 use App\User;
 use Illuminate\Http\Request;
 use jeremykenedy\LaravelRoles\Models\Role;
 
 class UsersController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $users = User::all();
@@ -15,6 +17,10 @@ class UsersController extends Controller
         return view('admin.users.index')->with('users', $users);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $user = User::with('roles')->where('id', $id)->first();
@@ -22,6 +28,9 @@ class UsersController extends Controller
         return view('admin.users.show')->with('user', $user);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $roles = Role::all();
@@ -29,6 +38,11 @@ class UsersController extends Controller
         return view('admin.users.store')->with('roles', $roles);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request)
     {
         $this->validate($request, array(
@@ -59,6 +73,10 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -70,6 +88,12 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request, $id)
     {
         $this->validate($request, array(
@@ -99,6 +123,10 @@ class UsersController extends Controller
         flash('Something went wrong')->error();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
