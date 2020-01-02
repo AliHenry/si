@@ -7,10 +7,10 @@
 @section('content')
     <div class="main-content page-profile">
         <div class="page-header">
-            <h3 class="page-title">Create Brand</h3>
+            <h3 class="page-title">Create User</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Brands</a></li>
+                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Users</a></li>
             </ol>
         </div>
         <div class="row">
@@ -32,17 +32,17 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Email</label>
                                     <input type="email" class="form-control" name="email" id="exampleInputName"
-                                           aria-describedby="emailHelp" placeholder="Enter User Name">
+                                           aria-describedby="emailHelp" placeholder="Enter Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Password</label>
                                     <input type="password" class="form-control" name="password" id="exampleInputName"
-                                           aria-describedby="emailHelp" placeholder="Enter User Name">
+                                           aria-describedby="emailHelp" placeholder="Enter Password">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Confirm Password</label>
                                     <input type="password" class="form-control" name="password_confirmation" id="exampleInputName"
-                                           aria-describedby="emailHelp" placeholder="Enter User Name">
+                                           aria-describedby="emailHelp" placeholder="Enter Confirm Password">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Role</label>
