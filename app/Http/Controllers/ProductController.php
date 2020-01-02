@@ -52,7 +52,7 @@ class ProductController extends Controller
             'discount' => 'nullable|string',
             'limit' => 'nullable|string|max:255',
             'cate_id' => 'required|string|max:255',
-            'brand_id' => 'nullable|string|max:255',
+            'brand_id' => 'required|string|max:255',
             'featured' => 'sometimes|string',
             'avatar' => 'sometimes|max:2000|mimes:jpeg,jpg,png',
             [
@@ -69,7 +69,7 @@ class ProductController extends Controller
         $product->measure = $request->measure;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->qty = $request->qty;
+        $product->qty = $request->qty ? $request->qty : 0;
         $product->limit = $request->limit;
         $product->cate_id = $request->cate_id;
         $product->brand_id = $request->brand_id;
