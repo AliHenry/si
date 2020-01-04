@@ -36,7 +36,7 @@ class RolesController extends Controller
 
         $role = new Role();
         $role->name = $request->name;
-        $role->slug = strtolower($request->name);
+        $role->slug = slug_exist($request->name);
         $role->description = $request->description;
 
         if ($role->save()) {
@@ -56,7 +56,7 @@ class RolesController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.zzzz')->with('permissions', $permissions);
+        return view('admin.roles.store')->with('permissions', $permissions);
     }
 
     public function edit($id)
@@ -82,7 +82,7 @@ class RolesController extends Controller
 
         $role = Role::findOrFail($id);
         $role->name = $request->name;
-        //$role->slug = strtolower($request->name);
+        $role->slug = slug_exist($request->name);
         $role->description = $request->description;
 
 

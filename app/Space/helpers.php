@@ -231,6 +231,26 @@ function attendanceType($attend_id, $user_id){
         ->first();
 }
 
+function store_managers_permission($permission)
+{
+    $id = null;
+    if ($permission == 'manager plumbing'){
+        $id = Category::where('name', 'Plumbing')->first()->id;
+    }elseif ($permission == 'manager painting'){
+        $id = Category::where('name', 'Painting')->first()->id;
+    }elseif ($permission == 'manager electrical'){
+        $id = Category::where('name', 'Electrical')->first()->id;
+    }elseif ($permission == 'manager door and metro tiles	'){
+        $id = Category::where('name', 'Door and Metro Tiles	')->first()->id;
+    }elseif ($permission == 'manager ashaka cement'){
+        $id = Category::where('name', 'Ashaka Cement')->first()->id;
+    }elseif ($permission == 'manager moulding and white cement'){
+        $id = Category::where('name', 'Moulding and White Cement')->first()->id;
+    }
+
+    return $id;
+}
+
 function set_permission($name)
 {
     $Permissionitems = [

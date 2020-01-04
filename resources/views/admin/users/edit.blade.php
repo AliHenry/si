@@ -28,12 +28,12 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Name</label>
                                     <input type="text" class="form-control" name="name" id="exampleInputName"
-                                           aria-describedby="emailHelp" placeholder="Enter User Name" value="{{$use->name}}">
+                                           aria-describedby="emailHelp" placeholder="Enter User Name" value="{{$user->name}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Email</label>
                                     <input type="email" class="form-control" name="email" id="exampleInputName"
-                                           aria-describedby="emailHelp" placeholder="Enter Email" value="{{$use->email}}">
+                                           aria-describedby="emailHelp" placeholder="Enter Email" value="{{$user->email}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">Password</label>

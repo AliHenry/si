@@ -100,6 +100,168 @@
                                         @endforeach
                                     </div>
                                     <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Employee Attendance</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'attendance')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Customers</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'customers')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Categories</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'categories')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Products</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'products')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Brands</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'brands')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                                   >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Zones</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'zones')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Countries</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'country')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage State</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'state')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage LGAs</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'lga')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                            >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         </form>

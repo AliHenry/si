@@ -16,7 +16,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category', 'brand')->get();
+
+        $cate_id = store_managers_permission(auth()->user()->role);
+
+        if ($cate_id){
+
+            $products = Product::with('category', 'brand')->where('cate_id', $cate_id)->get();
+        }else{
+            $products = Product::with('category', 'brand')->get();
+        }
 
         return view('admin.products.index')->with('products', $products);
     }

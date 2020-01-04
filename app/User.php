@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,7 +31,17 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return ($this->role == 'admin' || $this->role == 'payer');
+        return ($this->role == 'admin'
+            || $this->role == 'sells'
+            || $this->role == 'manager plumbing'
+            || $this->role == 'manager painting'
+            || $this->role == 'ashaka cement'
+            || $this->role == 'door and metro tiles'
+            || $this->role == 'moulding and white cement'
+            || $this->role == 'electrical'
+            || $this->role == 'store auditor'
+            || $this->role == 'sells auditor'
+        );
     }
 
     public function profile()

@@ -58,7 +58,7 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $role = Role::findOrFail($request->role_id);
-        $user->role = $role->name;
+        $user->role = strtolower($role->name);
 
         if ($user->save()) {
 
@@ -98,7 +98,7 @@ class UsersController extends Controller
     {
         $this->validate($request, array(
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255',
             'password' => 'sometimes|min:6|confirmed|max:255',
             'role_id' => 'required|string',
         ));
@@ -109,7 +109,7 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $role = Role::findOrFail($request->role_id);
-        $user->role = $role->name;
+        $user->role = strtolower($role->name);
 
         if ($user->save()) {
 
