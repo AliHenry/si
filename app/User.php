@@ -32,15 +32,15 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return ($this->role == 'admin'
-            || $this->role == 'sells'
+            || $this->role == 'manager sells'
             || $this->role == 'manager plumbing'
             || $this->role == 'manager painting'
             || $this->role == 'manager ashaka cement'
-            || $this->role == 'door and metro tiles'
-            || $this->role == 'moulding and white cement'
-            || $this->role == 'electrical'
-            || $this->role == 'store auditor'
-            || $this->role == 'sells auditor'
+            || $this->role == 'manager door and metro tiles'
+            || $this->role == 'manager moulding and white cement'
+            || $this->role == 'manager electrical'
+            || $this->role == 'manager store auditor'
+            || $this->role == 'manager sells auditor'
         );
     }
 
