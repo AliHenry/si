@@ -35,7 +35,7 @@ class User extends Authenticatable
             || $this->role == 'sells'
             || $this->role == 'manager plumbing'
             || $this->role == 'manager painting'
-            || $this->role == 'ashaka cement'
+            || $this->role == 'manager ashaka cement'
             || $this->role == 'door and metro tiles'
             || $this->role == 'moulding and white cement'
             || $this->role == 'electrical'

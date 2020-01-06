@@ -92,6 +92,7 @@ Route::group([
 
     // Customers
     Route::group(['prefix' => 'manage-store'], function () {
+        Route::resource('audits', 'StoreAuditController');
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('brands', 'BrandController');

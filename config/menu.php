@@ -85,6 +85,12 @@ return [
             'icon' => 'icon-fa icon-fa-th-large',
             'children' => [
                 [
+                    'title' => 'Audit',
+                    'link' => '/admin/manage-store/audits',
+                    'active' => 'admin/manage-store/audits*',
+                    'slug' => 'view.store.audit',
+                ],
+                [
                     'title' => 'Category',
                     'link' => '/admin/manage-store/categories',
                     'active' => 'admin/manage-store/categories*',
