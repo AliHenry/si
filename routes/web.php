@@ -21,6 +21,8 @@ Route::get('/', [
 |
 */
 Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
+//Route::get('fetch-product', 'StoreAuditController@fetchProduct');
+//Route::get('edit-store-audit', 'StoreAuditController@EditStoreAudit')->name('store.audit.edit');
 
 // Billing
 Route::group(['prefix' => 'api'], function () {
@@ -92,6 +94,12 @@ Route::group([
 
     // Customers
     Route::group(['prefix' => 'manage-store'], function () {
+        //Route::get('audits/fetch-product', 'StoreAuditController@fetchProduct');
+        Route::post('audits/audits-verification', 'StoreAuditController@verifyProduct');
+        Route::post('audits/audits-unverified', 'StoreAuditController@unverifyProduct');
+        Route::get('edit-store-audit', 'StoreAuditController@editStoreAudit')->name('store.audit.edit');
+        Route::get('edit-store-report', 'StoreAuditController@reportStoreAudit')->name('store.audit.report');
+
         Route::resource('audits', 'StoreAuditController');
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');

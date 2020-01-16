@@ -1785,6 +1785,211 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/EditStoreAudit.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: ['audit'],
+
+    data: function data() {
+        return {
+            products: [],
+            cateID: null,
+            showInvoice: false,
+            getAmount: true,
+            showAmount: false,
+            paidAmount: '',
+            paidInvoice: false,
+            inputId: null
+        };
+    },
+
+
+    // mounted () {
+    //   this.showInvoice = false;
+    //   this.showAmount = false;
+    // },
+
+    methods: {
+        fetchProduct: function fetchProduct() {
+            var _this = this;
+
+            console.log(this.cateID);
+            axios.get('fetch-product?category=' + this.cateID).then(function (res) {
+                _this.products = res.data;
+                console.log(res.data);
+            });
+        },
+        verified: function verified(auditId, productID) {
+            var _this2 = this;
+
+            var data = {
+                audit: auditId,
+                product: productID
+            };
+            console.log(data);
+            axios.post('audits-verification', data).then(function (res) {
+                if (res.data) {
+                    _this2.fetchProduct();
+                }
+
+                console.log(res.data);
+            });
+        },
+        unVerified: function unVerified(auditId, productID, missing) {
+            var _this3 = this;
+
+            console.log(missing);
+            var data = {
+                audit: auditId,
+                product: productID,
+                missing: missing,
+                note: 'none'
+            };
+            console.log(data);
+            axios.post('audits-unverified', data).then(function (res) {
+                if (res.data) {
+                    _this3.fetchProduct();
+                }
+
+                console.log(res.data);
+            });
+        },
+
+
+        // fetchProduct() {
+        //     axios.get('payment?code=' + this.customerCode).then(res => {
+        //         this.showInvoice = true;
+        //         this.getAmount = false;
+        //         this.showAmount = true;
+        //         this.bill = res.data;
+        //         console.log(res.data);
+        //     })
+        // },
+
+        printme: function printme() {
+            window.print();
+        },
+        makePayment: function makePayment() {
+            var _this4 = this;
+
+            if (this.paidAmount === '') {
+                toastr['warning']('Input Amount', 'Warning');
+                return;
+            }
+            var data = {
+                paid_amount: this.paidAmount,
+                code: this.customerCode
+
+            };
+
+            axios.post('payment', data).then(function (res) {
+                _this4.showInvoice = false;
+                _this4.paidInvoice = true;
+                _this4.showAmount = false;
+                _this4.bill = res.data;
+                console.log(res.data);
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/GenerateBill.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2017,354 +2222,6 @@ var smtpComponent = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/Payment.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {},
-
-  data: function data() {
-    return {
-      customerCode: '',
-      bill: {},
-      showInvoice: false,
-      getAmount: true,
-      showAmount: false,
-      paidAmount: '',
-      paidInvoice: false
-    };
-  },
-  mounted: function mounted() {
-    this.showInvoice = false;
-    this.showAmount = false;
-  },
-
-
-  methods: {
-    getBill: function getBill() {
-      var _this = this;
-
-      axios.get('payment?code=' + this.customerCode).then(function (res) {
-        _this.showInvoice = true;
-        _this.getAmount = false;
-        _this.showAmount = true;
-        _this.bill = res.data;
-        console.log(res.data);
-      });
-    },
-    printme: function printme() {
-      window.print();
-    },
-    makePayment: function makePayment() {
-      var _this2 = this;
-
-      if (this.paidAmount === '') {
-        toastr['warning']('Input Amount', 'Warning');
-        return;
-      }
-      var data = {
-        paid_amount: this.paidAmount,
-        code: this.customerCode
-
-      };
-
-      axios.post('payment', data).then(function (res) {
-        _this2.showInvoice = false;
-        _this2.paidInvoice = true;
-        _this2.showAmount = false;
-        _this2.bill = res.data;
-        console.log(res.data);
-      });
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/PieChart.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2419,6 +2276,213 @@ var smtpComponent = {
       options: options
     });
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/StoreAudit.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: ['categories'],
+
+    data: function data() {
+        return {
+            products: [],
+            cateID: null,
+            showInvoice: false,
+            getAmount: true,
+            showAmount: false,
+            paidAmount: '',
+            paidInvoice: false,
+            inputId: null,
+            columns: [{ label: 'id', field: 'id' }, { label: 'Name', field: 'name' }, { label: 'Email', field: 'email' }],
+            rows: [{ id: 1, name: "Aliyu", email: '@gmail.com' }],
+            page: 1,
+            per_page: 10
+        };
+    },
+
+
+    // mounted () {
+    //   this.showInvoice = false;
+    //   this.showAmount = false;
+    // },
+
+    methods: {
+        fetchProduct: function fetchProduct() {
+            var _this = this;
+
+            console.log(this.cateID);
+            axios.get('fetch-product?category=' + this.cateID).then(function (res) {
+                _this.products = res.data;
+                console.log(res.data);
+            });
+        },
+        verified: function verified(auditId, productID) {
+            var _this2 = this;
+
+            var data = {
+                audit: auditId,
+                product: productID
+            };
+            console.log(data);
+            axios.post('audits-verification', data).then(function (res) {
+                if (res.data) {
+                    _this2.fetchProduct();
+                }
+
+                console.log(res.data);
+            });
+        },
+        unVerified: function unVerified(auditId, productID, missing) {
+            var _this3 = this;
+
+            console.log(missing);
+            var data = {
+                audit: auditId,
+                product: productID,
+                missing: missing,
+                note: 'none'
+            };
+            console.log(data);
+            axios.post('audits-unverified', data).then(function (res) {
+                if (res.data) {
+                    _this3.fetchProduct();
+                }
+
+                console.log(res.data);
+            });
+        },
+
+
+        // fetchProduct() {
+        //     axios.get('payment?code=' + this.customerCode).then(res => {
+        //         this.showInvoice = true;
+        //         this.getAmount = false;
+        //         this.showAmount = true;
+        //         this.bill = res.data;
+        //         console.log(res.data);
+        //     })
+        // },
+
+        printme: function printme() {
+            window.print();
+        },
+        makePayment: function makePayment() {
+            var _this4 = this;
+
+            if (this.paidAmount === '') {
+                toastr['warning']('Input Amount', 'Warning');
+                return;
+            }
+            var data = {
+                paid_amount: this.paidAmount,
+                code: this.customerCode
+
+            };
+
+            axios.post('payment', data).then(function (res) {
+                _this4.showInvoice = false;
+                _this4.paidInvoice = true;
+                _this4.showAmount = false;
+                _this4.bill = res.data;
+                console.log(res.data);
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -20432,7 +20496,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-669271ab\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/Payment.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6a6d3436\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/StoreAudit.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20442,467 +20506,254 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main-content page-profile" }, [
+  return _c("div", [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _vm.getAmount
-          ? _c("nav", { staticClass: "page-header" }, [
-              _c("h3", { staticClass: "page-title" }, [
-                _vm._v("Create Payment")
-              ]),
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", [
+              _vm._m(0),
               _vm._v(" "),
-              _c("div", { staticClass: "breadcrumb" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("input", {
-                    directives: [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", [_vm._v("Category")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.customerCode,
-                        expression: "customerCode"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Enter Customer Code" },
-                    domProps: { value: _vm.customerCode },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cateID,
+                            expression: "cateID"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.cateID = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
-                        _vm.customerCode = $event.target.value
-                      }
-                    }
-                  })
+                      },
+                      [
+                        _c("label", [_vm._v("Category")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { selected: "" } }, [
+                          _vm._v("-- Select Store --")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.categories, function(category) {
+                          return _c(
+                            "option",
+                            { domProps: { value: category.id } },
+                            [
+                              _vm._v(
+                                _vm._s(category.name) +
+                                  "\n                                        "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.getBill($event)
-                        }
-                      }
-                    },
-                    [_vm._v("Get Bill")]
-                  )
-                ])
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.showAmount
-          ? _c("nav", { staticClass: "page-header" }, [
-              _c("h3", { staticClass: "page-title" }, [
-                _vm._v("Create Payment")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "breadcrumb" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.paidAmount,
-                        expression: "paidAmount"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Enter Payment Amount"
-                    },
-                    domProps: { value: _vm.paidAmount },
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.paidAmount = $event.target.value
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.fetchProduct($event)
                       }
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.makePayment($event)
-                        }
-                      }
-                    },
-                    [_vm._v("Make Payment")]
-                  )
-                ])
+                  },
+                  [_vm._v("Start Audit")]
+                )
               ])
             ])
-          : _vm._e()
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _vm.showInvoice
-          ? _c("div", { staticClass: "invoice p-3 mb-3 mt-5" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c("h4", [
-                    _c("i", { staticClass: "fa fa-globe" }),
-                    _vm._v(" Bauchi State Water Board\n                "),
-                    _c("small", { staticClass: "float-right" }, [
-                      _vm._v("Date: " + _vm._s(_vm.bill.payment_date))
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row invoice-info" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-                  _vm._v("\n              To\n              "),
-                  _c("address", [
-                    _c("strong", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.bill.customer.first_name +
-                            " " +
-                            _vm.bill.customer.middle_name +
-                            " " +
-                            _vm.bill.customer.last_name
-                        ) + "}"
-                      )
-                    ]),
-                    _c("br"),
-                    _vm._v(
-                      "\n                " + _vm._s(_vm.bill.customer.address)
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Phone: " +
-                        _vm._s(_vm.bill.customer.phone)
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Email: " +
-                        _vm._s(_vm.bill.customer.email) +
-                        "\n              "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-                  _c("b", [_vm._v("Invoice #007612")]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Order ID:")]),
-                  _vm._v(" " + _vm._s(_vm.bill.code)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Payment Due:")]),
-                  _vm._v(_vm._s(_vm.bill.payment_date)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Account:")]),
-                  _vm._v(
-                    " " + _vm._s(_vm.bill.customer.code) + "\n            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12 table-responsive" }, [
-                  _c("table", { staticClass: "table table-striped" }, [
-                    _c("thead"),
-                    _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("td", [_vm._v("Arrears:")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("₦ " + _vm._s(_vm.bill.arrears))])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("Amount Due:")]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v("₦ " + _vm._s(_vm.bill.current_amount))
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c("p", { staticClass: "lead" }, [
-                    _vm._v("Amount Due " + _vm._s(_vm.bill.payment_date))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", { staticStyle: { width: "50%" } }, [
-                            _vm._v("Subtotal:")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "₦ " +
-                                _vm._s(
-                                  _vm.bill.arrears + _vm.bill.current_amount
-                                )
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Total:")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "₦ " +
-                                _vm._s(
-                                  _vm.bill.arrears + _vm.bill.current_amount
-                                )
-                            )
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row no-print" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { href: "", target: "_blank" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.printme($event)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success float-right",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.makePayment($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "fa fa-credit-card" }),
-                      _vm._v("\n                Submit Payment\n              ")
-                    ]
-                  )
-                ])
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.paidInvoice
-          ? _c("div", { staticClass: "invoice p-3 mb-3 mt-5" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c("h4", [
-                    _c("i", { staticClass: "fa fa-globe" }),
-                    _vm._v(" Bauchi State Water Board\n                "),
-                    _c("small", { staticClass: "float-right" }, [
-                      _vm._v("Date: " + _vm._s(_vm.bill.payment_date))
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row invoice-info" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "table",
+              {
+                staticClass: "table table-striped table-bordered",
+                attrs: {
+                  id: "departments-datatable",
+                  cellspacing: "0",
+                  width: "100%"
+                }
+              },
+              [
                 _vm._m(2),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-                  _vm._v("\n              To\n              "),
-                  _c("address", [
-                    _c("strong", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.bill.customer.first_name +
-                            " " +
-                            _vm.bill.customer.middle_name +
-                            " " +
-                            _vm.bill.customer.last_name
-                        ) + "}"
-                      )
-                    ]),
-                    _c("br"),
-                    _vm._v(
-                      "\n                " + _vm._s(_vm.bill.customer.address)
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Phone: " +
-                        _vm._s(_vm.bill.customer.phone)
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Email: " +
-                        _vm._s(_vm.bill.customer.email) +
-                        "\n              "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-                  _c("b", [_vm._v("Receipt #007612")]),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Order ID:")]),
-                  _vm._v(" " + _vm._s(_vm.bill.code)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Payment Due:")]),
-                  _vm._v(_vm._s(_vm.bill.payment_date)),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("b", [_vm._v("Account:")]),
-                  _vm._v(
-                    " " + _vm._s(_vm.bill.customer.code) + "\n            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-12 table-responsive" }, [
-                  _c("table", { staticClass: "table table-striped" }, [
-                    _c("thead"),
+                _vm._l(_vm.products, function(product) {
+                  return _c("tr", [
+                    _c("th", [_vm._v(_vm._s(product.code))]),
                     _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("td", [_vm._v("Arrears:")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("₦ " + _vm._s(_vm.bill.oldArrears))])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("Amount Due:")]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v("₦ " + _vm._s(_vm.bill.current_amount))
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("Total:")]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("b", [
-                            _vm._v(
-                              "₦ " +
-                                _vm._s(
-                                  _vm.bill.oldArrears + _vm.bill.current_amount
-                                )
-                            )
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c("p", { staticClass: "lead" }, [
-                    _vm._v("Amount Paid "),
-                    _c("b", [_vm._v("₦ " + _vm._s(_vm.bill.paid_amount))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", { staticStyle: { width: "50%" } }, [
-                            _vm._v("Balance")
-                          ]),
+                    _c("td", [_vm._v(_vm._s(product.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.qty))]),
+                    _vm._v(" "),
+                    !product.pivot
+                      ? _c("td", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.verified(_vm.cateID, product.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Verify\n                                "
+                              )
+                            ]
+                          ),
                           _vm._v(" "),
-                          _c("td", [_vm._v("₦ " + _vm._s(_vm.bill.arrears))])
+                          product.pivot.missing > 0 &&
+                          product.pivot.balanced == 0
+                            ? _c("p", [_vm._v("Not Balanced")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          product.pivot.missing === 0 &&
+                          product.pivot.balanced == 1
+                            ? _c("p", [_vm._v("verified")])
+                            : _vm._e()
                         ])
-                      ])
-                    ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    product.pivot
+                      ? _c("td", [
+                          product.pivot.balanced == 0
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.verified(
+                                        product.pivot.store_audit_id,
+                                        product.id
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "Verify\n                                "
+                                  )
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          product.pivot.missing > 0 &&
+                          product.pivot.balanced == 0
+                            ? _c("p", [_vm._v("Not Balanced")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          product.pivot.missing === 0 &&
+                          product.pivot.balanced == 1
+                            ? _c("p", [_vm._v("verified")])
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    product.pivot
+                      ? _c("td", [
+                          product.pivot.balanced == 0
+                            ? _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: product.pivot.missing,
+                                    expression: "product.pivot.missing"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "number",
+                                  name: "product.pivot.missing"
+                                },
+                                domProps: { value: product.pivot.missing },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      product.pivot,
+                                      "missing",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          product.pivot.balanced == 0
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.unVerified(
+                                        product.pivot.store_audit_id,
+                                        product.id,
+                                        product.pivot.missing
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Send Report\n                                "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      : _vm._e()
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row no-print" }, [
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { href: "", target: "_blank" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.printme($event)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print")]
-                  ),
-                  _vm._v(" "),
-                  _vm.showAmount
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success float-right",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.makePayment($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-credit-card" }),
-                          _vm._v(
-                            "\n                Submit Payment\n              "
-                          )
-                        ]
-                      )
-                    : _vm._e()
-                ])
-              ])
-            ])
-          : _vm._e()
+                }),
+                _vm._v(" "),
+                _c("tbody")
+              ],
+              2
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -20912,47 +20763,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-      _vm._v("\n              From\n              "),
-      _c("address", [
-        _c("strong", [_vm._v("Bauchi State WaterBoard.")]),
-        _c("br"),
-        _vm._v("\n                Bauchi"),
-        _c("br"),
-        _vm._v("\n                Phone: (804) 123-5432"),
-        _c("br"),
-        _vm._v(
-          "\n                Email: info@almasaeedstudio.com\n              "
-        )
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("Store Audit Form")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Tax (9.3%)")]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("All Products")]),
       _vm._v(" "),
-      _c("td", [_vm._v("0")])
+      _c("div", { staticClass: "card-actions" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 invoice-col" }, [
-      _vm._v("\n              From\n              "),
-      _c("address", [
-        _c("strong", [_vm._v("Bauchi State WaterBoard.")]),
-        _c("br"),
-        _vm._v("\n                Bauchi"),
-        _c("br"),
-        _vm._v("\n                Phone: (804) 123-5432"),
-        _c("br"),
-        _vm._v(
-          "\n                Email: info@almasaeedstudio.com\n              "
-        )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Current Qty")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Verify")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unverify")])
       ])
     ])
   }
@@ -20962,7 +20801,264 @@ render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-669271ab", { render: render, staticRenderFns: staticRenderFns })
+    require("vue-hot-reload-api")      .rerender("data-v-6a6d3436", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-88bab5e2\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/EditStoreAudit.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(1),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.created_at) +
+                        "\n\n                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(2),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.store.name) +
+                        "\n                                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(3),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.balanced) +
+                        "\n                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(4),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.unbalanced) +
+                        "\n\n                                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(5),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.user.name) +
+                        "\n\n                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _vm._m(6),
+                    _vm._v(
+                      "\n                                    " +
+                        _vm._s(_vm.audit.note) +
+                        "\n                                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(7),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "table",
+              {
+                staticClass: "table table-striped table-bordered",
+                attrs: {
+                  id: "departments-datatable",
+                  cellspacing: "0",
+                  width: "100%"
+                }
+              },
+              [
+                _vm._m(8),
+                _vm._v(" "),
+                _vm._l(_vm.audit.products, function(product) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(product.code))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(product.name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: product.pivot.balanced,
+                            expression: "product.pivot.balanced"
+                          }
+                        ],
+                        staticClass: "form-control ls-switch",
+                        attrs: { type: "checkbox", "data-color": "#007dcc" },
+                        domProps: {
+                          checked: Array.isArray(product.pivot.balanced)
+                            ? _vm._i(product.pivot.balanced, null) > -1
+                            : product.pivot.balanced
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = product.pivot.balanced,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    product.pivot,
+                                    "balanced",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    product.pivot,
+                                    "balanced",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(product.pivot, "balanced", $$c)
+                            }
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("tbody")
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("Store Audit Form")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Date:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Store:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Balanced:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Unbalanced:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Audit Manager:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Note:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("All Products")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-actions" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Code")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Successful")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-88bab5e2", { render: render, staticRenderFns: staticRenderFns })
   }
 }
 
@@ -32562,8 +32658,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_PieChart_vue__ = __webpack_require__("./resources/admin/js/components/PieChart.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_MailSettings_vue__ = __webpack_require__("./resources/admin/js/components/MailSettings.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__apps_TodosApp_vue__ = __webpack_require__("./resources/admin/js/apps/TodosApp.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Payment__ = __webpack_require__("./resources/admin/js/components/Payment.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_StoreAudit__ = __webpack_require__("./resources/admin/js/components/StoreAudit.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_GenerateBill__ = __webpack_require__("./resources/admin/js/components/GenerateBill.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_EditStoreAudit__ = __webpack_require__("./resources/admin/js/components/EditStoreAudit.vue");
+
 
 
 
@@ -32593,7 +32691,8 @@ window.Vue.component('bar-chart', __WEBPACK_IMPORTED_MODULE_1__components_BarCha
 window.Vue.component('line-chart', __WEBPACK_IMPORTED_MODULE_2__components_LineChart_vue__["a" /* default */]);
 window.Vue.component('pie-chart', __WEBPACK_IMPORTED_MODULE_3__components_PieChart_vue__["a" /* default */]);
 window.Vue.component('mail-settings', __WEBPACK_IMPORTED_MODULE_4__components_MailSettings_vue__["a" /* default */]);
-window.Vue.component('payment', __WEBPACK_IMPORTED_MODULE_6__components_Payment__["a" /* default */]);
+window.Vue.component('store-audit', __WEBPACK_IMPORTED_MODULE_6__components_StoreAudit__["a" /* default */]);
+window.Vue.component('edit-store-audit', __WEBPACK_IMPORTED_MODULE_8__components_EditStoreAudit__["a" /* default */]);
 window.Vue.component('generate-bill', __WEBPACK_IMPORTED_MODULE_7__components_GenerateBill__["a" /* default */]);
 
 window.Vue.component('todos-app', __WEBPACK_IMPORTED_MODULE_5__apps_TodosApp_vue__["a" /* default */]);
@@ -32773,6 +32872,61 @@ if (false) {(function () {
 
 /***/ }),
 
+/***/ "./resources/admin/js/components/EditStoreAudit.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_EditStoreAudit_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/EditStoreAudit.vue");
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_88bab5e2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditStoreAudit_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-88bab5e2\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/EditStoreAudit.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__("./node_modules/vue-loader/lib/runtime/component-normalizer.js");
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_EditStoreAudit_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_88bab5e2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditStoreAudit_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_88bab5e2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditStoreAudit_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/admin/js/components/EditStoreAudit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-88bab5e2", Component.options)
+  } else {
+    hotAPI.reload("data-v-88bab5e2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
 /***/ "./resources/admin/js/components/GenerateBill.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -32941,61 +33095,6 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ "./resources/admin/js/components/Payment.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_Payment_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/Payment.vue");
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_669271ab_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Payment_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-669271ab\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/Payment.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__("./node_modules/vue-loader/lib/runtime/component-normalizer.js");
-var disposed = false
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_Payment_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_669271ab_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Payment_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_669271ab_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Payment_vue__["b" /* staticRenderFns */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/admin/js/components/Payment.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-669271ab", Component.options)
-  } else {
-    hotAPI.reload("data-v-669271ab", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-
 /***/ "./resources/admin/js/components/PieChart.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33044,6 +33143,61 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-322cd8dd", Component.options)
   } else {
     hotAPI.reload("data-v-322cd8dd", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ "./resources/admin/js/components/StoreAudit.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_StoreAudit_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/admin/js/components/StoreAudit.vue");
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6a6d3436_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_StoreAudit_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6a6d3436\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/admin/js/components/StoreAudit.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__("./node_modules/vue-loader/lib/runtime/component-normalizer.js");
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_StoreAudit_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6a6d3436_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_StoreAudit_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6a6d3436_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_StoreAudit_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/admin/js/components/StoreAudit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a6d3436", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a6d3436", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

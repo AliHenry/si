@@ -15,7 +15,7 @@
             </ol>
             <div class="page-actions">
                 @permission('create.store.audit')
-                    <a href="{{route('products.create')}}" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New Audit</a>
+                    <a href="{{route('audits.create')}}" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New Audit</a>
                 @endpermission
             </div>
         </div>
@@ -44,7 +44,7 @@
                             </thead>
                             @foreach($storeAudits as $audit)
                             <tr>
-                                <td>{{$audit->create_at}}</td>
+                                <td>{{\Carbon\Carbon::parse($audit->created_at)->format('M d, Y - h:i A')}}</td>
                                 <td>{{$audit->store->name}}</td>
                                 <td>{{$audit->user->name}}
                                 <td>{{$audit->balanced}}</td>

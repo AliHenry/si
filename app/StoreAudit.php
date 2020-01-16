@@ -15,4 +15,11 @@ class StoreAudit extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'store_audits_products', 'store_audit_id', 'prod_id')
+            ->withPivot('balanced', 'missing', 'note')
+            ->withTimestamps();
+    }
 }

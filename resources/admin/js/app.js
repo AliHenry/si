@@ -4,8 +4,9 @@ import LineChart from './components/LineChart.vue'
 import PieChart from './components/PieChart.vue'
 import MailSettings from './components/MailSettings.vue'
 import TodosApp from './apps/TodosApp.vue'
-import Payment from "./components/Payment";
+import StoreAudit from "./components/StoreAudit";
 import GenerateBill from "./components/GenerateBill";
+import EditStoreAudit from "./components/EditStoreAudit";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -27,7 +28,8 @@ window.Vue.component('bar-chart', BarChart)
 window.Vue.component('line-chart', LineChart)
 window.Vue.component('pie-chart', PieChart)
 window.Vue.component('mail-settings', MailSettings)
-window.Vue.component('payment', Payment)
+window.Vue.component('store-audit', StoreAudit)
+window.Vue.component('edit-store-audit', EditStoreAudit)
 window.Vue.component('generate-bill', GenerateBill)
 
 
