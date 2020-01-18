@@ -19,14 +19,14 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::with(['zone','state', 'lga', 'paymentType'])->get();
+        $customers = Customer::with(['zone','state', 'lga', 'paymentTypes'])->get();
 
         return view('admin.customers.index')->with('customers', $customers);
     }
 
     public function show($id)
     {
-        $customer = Customer::with(['zone','state', 'lga', 'paymentType'] )->where('id', $id)->first();
+        $customer = Customer::with(['zone','state', 'lga', 'paymentTypes'] )->where('id', $id)->first();
 
         return view('admin.customers.show')->with('customer', $customer);
     }
@@ -81,7 +81,7 @@ class CustomerController extends Controller
 
 
         if ($customer->save()) {
-            $customer = Customer::with('paymentType')->where('id', $customer->id)->first();
+            $customer = Customer::with('paymentTypes')->where('id', $customer->id)->first();
 
             $billing = new Billing();
             $billing->code = getNextBillingNumber();

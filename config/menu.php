@@ -24,6 +24,27 @@ return [
             'icon' => 'icon-fa icon-fa-dashboard',
         ],
         [
+            'title' => 'Sells',
+            'link' => '#',
+            'active' => 'admin/sells*',
+            'slug' => 'view.payment.types',
+            'icon' => 'icon-fa icon-fa-th-large',
+            'children' => [
+                [
+                    'title' => 'Payment Type',
+                    'link' => '/admin/manage-sells/types',
+                    'active' => 'admin/manage-sells/types*',
+                    'slug' => 'view.payment.types',
+                ],
+                [
+                    'title' => 'Payment Status',
+                    'link' => '/admin/manage-sells/status',
+                    'active' => 'admin/manage-sells/status*',
+                    'slug' => 'view.payment.status',
+                ],
+            ]
+        ],
+        [
             'title' => 'Users',
             'link' => '#',
             'active' => 'admin/manage-users*',

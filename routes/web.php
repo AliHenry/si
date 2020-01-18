@@ -106,6 +106,15 @@ Route::group([
         Route::resource('brands', 'BrandController');
     });
 
+    // Customers
+    Route::group(['prefix' => 'manage-sells'], function () {
+
+        Route::resource('types', 'PaymentTypeController');
+        Route::resource('status', 'PaymentStatusController');
+//        Route::resource('products', 'ProductController');
+//        Route::resource('brands', 'BrandController');
+    });
+
     // Billing
 //    Route::group(['prefix' => 'manage-payment'], function () {
 //        Route::get('make-payment', 'PaymentController@index')->name('payment.index');
