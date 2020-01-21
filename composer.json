@@ -16,8 +16,9 @@
         "laracasts/flash": "^3.0",
         "laravel/socialite": "^2.0",
         "jeremykenedy/laravel-roles": "^2.3",
-        "hardevine/shoppingcart": "2.6.2.1",
-        "barryvdh/laravel-dompdf": "^0.8.5"
+        "barryvdh/laravel-dompdf": "^0.8.5",
+        "hardevine/shoppingcart": "^2.7"
+
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",

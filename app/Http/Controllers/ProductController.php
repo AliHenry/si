@@ -157,14 +157,13 @@ class ProductController extends Controller
         $product = Product::findOrfail($id);
         $product->name = $request->name;
         $product->slug = productSlug($request->name);
-        $product->code = getNextProductNumber();
         $product->measure = $request->measure;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->qty = $request->qty;
         $product->limit = $request->limit;
         $product->cate_id = $request->cate_id;
-        $product->brand_id = $request->brand_id;
+        $request->brand_id ? $product->brand_id = $request->brand_id : null;
         $product->featured = $request->featured && $request->featured === 'on' ? true : false ;
 
         if ($request->has('avatar')){

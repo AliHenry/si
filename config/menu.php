@@ -27,9 +27,15 @@ return [
             'title' => 'Sells',
             'link' => '#',
             'active' => 'admin/sells*',
-            'slug' => 'view.payment.types',
+            'slug' => 'view.sells',
             'icon' => 'icon-fa icon-fa-th-large',
             'children' => [
+                [
+                    'title' => 'Sells',
+                    'link' => '/admin/manage-sells/sells',
+                    'active' => 'admin/manage-sells/sells*',
+                    'slug' => 'view.sells',
+                ],
                 [
                     'title' => 'Payment Type',
                     'link' => '/admin/manage-sells/types',

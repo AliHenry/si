@@ -111,7 +111,7 @@ Route::group([
 
         Route::resource('types', 'PaymentTypeController');
         Route::resource('status', 'PaymentStatusController');
-//        Route::resource('products', 'ProductController');
+        Route::resource('sells', 'SellController');
 //        Route::resource('brands', 'BrandController');
     });
 
