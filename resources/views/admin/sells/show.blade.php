@@ -1,21 +1,21 @@
 @extends('admin.layouts.layout-basic')
 
 @section('scripts')
-    <script src="/assets/admin/js/users/users.js"></script>
+    <script src="/assets/admin/js/departments/departments.js"></script>
 @stop
 
 @section('content')
     <div class="main-content page-profile">
         <div class="page-header">
-            <h3 class="page-title">Product Detail</h3>
+            <h3 class="page-title">Sell Detail</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('products.index')}}">Products</a></li>
-                <li class="breadcrumb-item active">{{$product->name}}</li>
+                <li class="breadcrumb-item"><a href="{{route('sells.index')}}">Sells</a></li>
+                <li class="breadcrumb-item active">{{$sell->transaction_id}}</li>
             </ol>
             <div class="page-actions">
-                @permission('edit.products')
-                <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary"><i class="icon-fa icon-fa-edit"></i> Edit Product</a>
+                @permission('edit.sells')
+                <a href="{{route('sells.edit',$sell->id)}}" class="btn btn-primary"><i class="icon-fa icon-fa-edit"></i> Edit Sell</a>
                 @endpermission
 
             </div>
@@ -27,200 +27,115 @@
                         <div class="tabs tabs-default">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#user" role="tab">User Details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#sell" role="tab">Sell</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active" id="profile" role="tabpanel">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="avatar-container">
-                                                <img src="{{productImage($product->image)}}" alt="{{$product->name}}" class="img-fluid">
-                                            </div>
-                                        </div>
-{{--                                        <div class="col-sm-9">--}}
-{{--                                            <h4>{{ $employee->first_name.' '.$employee->middle_name.' '.$employee->last_name }}</h4>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->gender}}</p>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->address}}</p>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-birthday-cake"></i>{{\Carbon\Carbon::parse($employee->date_of_birth)->format('M d, Y')}}</p>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-phone"></i>{{$employee->phone}}</p>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-envelope"></i>{{$employee->email}}</p>--}}
-{{--                                            <p class="detail-row"><i class="icon-fa icon-fa-wrench"></i> {{$employee->department->name.'/'.$employee->designation->name}}</p>--}}
-{{--                                        </div>--}}
-                                    </div>
+                                <div class="tab-pane active" id="sell" role="tabpanel">
                                     <div class="col-sm-12 mt-4">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Code:</b></label>
-                                                {{$product->code}}
+                                                <label for="inputFirstName"><b>Transaction ID:</b></label>
+                                                {{$sell->transaction_id}}
 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Slug:</b></label>
-                                                {{$product->slug}}
+                                                <label for="inputFirstName"><b>Customer:</b></label>
+                                                {{$sell->cust_name ? $sell->cust_name : $sell->customer->first_name.' '.$sell->customer->middle_name.' '.$sell->customer->last_name}}
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Name:</b></label>
-                                                {{$product->name}}
+                                                <label for="inputFirstName"><b>Quantity:</b></label>
+                                                {{$sell->total_qtyax}}
 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Category:</b></label>
-                                                {{$product->category->name}}
+                                                <label for="inputFirstName"><b>Tax:</b></label>
+                                                {{$sell->tax}}
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Price:</b></label>
-                                                {{priceFormat($product->price)}}
+                                                <label for="inputFirstName"><b>Sub Total:</b></label>
+                                                {{priceFormat($sell->sub_total)}}
 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Discount:</b></label>
-                                                {{$product->discount}}
+                                                <label for="inputFirstName"><b>Total:</b></label>
+                                                {{priceFormat($sell->total)}}
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Qty:</b></label>
-                                                {{$product->qty}}
+                                                <label for="inputFirstName"><b>Payment Type:</b></label>
+                                                {{$sell->type->name}}
 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Limit:</b></label>
-                                                {{$product->limit}}
+                                                <label for="inputFirstName"><b>Status:</b></label>
+                                                {{$sell->status->name}}
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Measure:</b></label>
-                                                {{$product->measure}}
+                                                <label for="inputFirstName"><b>User:</b></label>
+                                                {{$sell->user->name}}
 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputFirstName"><b>Featured:</b></label>
-                                                {{$product->featured ? 'True' : 'False'}}
+                                                <label for="inputFirstName"><b>POS Code:</b></label>
+                                                {{$sell->pos_code ? $sell->pos_code : 'None'}}
                                             </div>
                                         </div>
                                         <hr>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="user" role="tabpanel">
-                                    <div class="row mt-4">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-{{--                                                <div class="col-sm-6">--}}
-{{--                                                    <h3 class="section-semi-title">User Details</h3>--}}
-{{--                                                    <ul class="media-list activity-list">--}}
-{{--                                                        <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->user->name}}</p>--}}
-{{--                                                        <p class="detail-row"><i class="icon-fa icon-fa-map-marker"></i> {{$employee->user->role}}</p>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="col-sm-6">--}}
-{{--                                                    <h3 class="section-semi-title">Security</h3>--}}
-{{--                                                    <ul class="media-list activity-list">--}}
-{{--                                                        <form action="{{'change.password', $employee->user->id}}" method="POST">--}}
-{{--                                                            @csrf--}}
-{{--                                                            @method('PATCH')--}}
-{{--                                                            <div class="form-group col-md-6">--}}
-{{--                                                                <label for="inputFirstName">Password</label>--}}
-{{--                                                                <input type="hidden" name="user_id" value="{{$employee->user->id}}">--}}
-{{--                                                                <input type="password" class="form-control" name="password" id="inputFirstName"--}}
-{{--                                                                       placeholder="First Name">--}}
-{{--                                                            </div>--}}
-{{--                                                            <input type="submit" class="btn btn-primary" value="Change Password">--}}
-{{--                                                        </form>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="friends" role="tabpanel">
-                                    <ul class="media-list friends-list">
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar1.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Shane White</h4>
-                                                <small>2000 friends</small>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar2.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Adam David</h4>
-                                                <small>200 friends</small>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar1.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Shane White</h4>
-                                                <small>2000 friends</small>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar2.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Adam David</h4>
-                                                <small>200 friends</small>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar1.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Shane White</h4>
-                                                <small>2000 friends</small>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object" src="/assets/admin/img/avatars/avatar2.png" alt="Generic placeholder image">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Adam David</h4>
-                                                <small>200 friends</small>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Sold Product</h6>
+
+                        <div class="card-actions">
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="departments-datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Qty</th>
+                                <th>product</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            @foreach($sell->products as $product)
+                                <tr>
+                                    <td>{{$product->pivot->qty}}</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->price}}</td>
+                                    <td>{{$product->pivot->total}}</td>
+                                    <td>{{$product->pivot->trans_status_id}}</td>
+                                </tr>
+                            @endforeach
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

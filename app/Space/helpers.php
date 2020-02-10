@@ -139,6 +139,20 @@ function getNextProductNumber()
     return $codePrefix. '' . sprintf('%010d', intval($number) + $interValNumber);
 }
 
+function getNextTransNumber()
+{
+    $randNumber = rand(100000, 999999);
+
+    $currentDate = Carbon::now()->format('Ymd');
+
+
+    $codePrefix = 'TRAN';
+
+
+    return $codePrefix. '' . $currentDate.''.$randNumber;
+
+}
+
 function getNextCustomerNumber()
 {
     $interValNumber = 1;

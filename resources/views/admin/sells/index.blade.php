@@ -50,9 +50,9 @@
                             @foreach($sells as $sell)
                             <tr>
                                 <td>{{$sell->transaction_id}}</td>
-                                <td>{{$sell->customer->name}}</td>
+                                <td>{{$sell->cust_name ? $sell->cust_name : $sell->customer->first_name.' '.$sell->customer->middle_name.' '.$sell->customer->last_name}}</td>
                                 <td>{{$sell->user->name}}</td>
-                                <td>{{$sell->qty}}</td>
+                                <td>{{$sell->total_qty}}</td>
                                 <td>{{$sell->sub_total}}</td>
                                 <td>{{$sell->total}}</td>
                                 <td>{{$sell->type->name}}</td>

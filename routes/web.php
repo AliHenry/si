@@ -21,7 +21,7 @@ Route::get('/', [
 |
 */
 Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
-//Route::get('fetch-product', 'StoreAuditController@fetchProduct');
+Route::get('release', 'ProductReleaseController@show');
 //Route::get('edit-store-audit', 'StoreAuditController@EditStoreAudit')->name('store.audit.edit');
 
 // Billing
@@ -109,9 +109,16 @@ Route::group([
     // Customers
     Route::group(['prefix' => 'manage-sells'], function () {
 
+        Route::get('add-to-cart', 'SellController@insertCart')->name('add.cart');
+        Route::get('delete-to-cart', 'SellController@destroyCart')->name('delete.cart');
+        Route::get('update-to-cart', 'SellController@updateCart')->name('update.cart.qty');
+        Route::get('invoice', 'InvoiceController@paymentInvoice')->name('sell.invoice');
+
         Route::resource('types', 'PaymentTypeController');
         Route::resource('status', 'PaymentStatusController');
         Route::resource('sells', 'SellController');
+        //Route::get('payment-invoice/{$id}', 'SellController@paymentInvoice')->name('sell.invoice');
+
 //        Route::resource('brands', 'BrandController');
     });
 

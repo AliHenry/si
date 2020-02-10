@@ -21,6 +21,11 @@ class Sell extends Model
         return $this->belongsTo(PaymentStatus::class, 'trans_status_id');
     }
 
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'cus_id');
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'sells_products', 'trans_id', 'prod_id')
