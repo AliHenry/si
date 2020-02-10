@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -166,6 +167,7 @@ class ProductController extends Controller
         $request->brand_id ? $product->brand_id = $request->brand_id : null;
         $product->featured = $request->featured && $request->featured === 'on' ? true : false ;
 
+        //return response()->json($product);
         if ($request->has('avatar')){
             Storage::disk('public')->delete($product->image);
             $product->image = uploadImage($request);
