@@ -1,4 +1,6 @@
 <?php
+
+use App\Sell;
 use App\Space\Settings\Setting;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -213,6 +215,16 @@ function getNextAttendanceNumber()
 function totalBill($bill)
 {
     return $bill->arrears + $bill->current_amount;
+}
+
+function updatePaymentStatus($sell_id){
+    $check = Sell::with("products")
+        ->where('id', $sell_id)
+        ->whereHas('products', function($q) {
+            $q->where('sells_products.trans_status_id', 1);
+        })->first();
+
+    return $check;
 }
 
 

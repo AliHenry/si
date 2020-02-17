@@ -191,9 +191,9 @@
                                     </div>
                                     <hr>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>Manage Categories</strong></label>
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Products</strong></label>
                                         @foreach($permissions as $permission)
-                                            @if($permission->type === 'categories')
+                                            @if($permission->type === 'products')
                                                 <div class="col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
@@ -209,9 +209,27 @@
                                     </div>
                                     <hr>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label"><strong>Manage Products</strong></label>
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Release Products</strong></label>
                                         @foreach($permissions as $permission)
-                                            @if($permission->type === 'products')
+                                            @if($permission->type === 'release-products')
+                                                <div class="col-sm-2">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="permissions[]"
+                                                                   value="{{ $permission->id }}"
+                                                                   class="form-check-input"
+                                                                   >{{$permission->name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"><strong>Manage Categories</strong></label>
+                                        @foreach($permissions as $permission)
+                                            @if($permission->type === 'categories')
                                                 <div class="col-sm-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">

@@ -21,7 +21,6 @@ Route::get('/', [
 |
 */
 Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
-Route::get('release', 'ProductReleaseController@show');
 //Route::get('edit-store-audit', 'StoreAuditController@EditStoreAudit')->name('store.audit.edit');
 
 // Billing
@@ -92,18 +91,26 @@ Route::group([
         Route::resource('customers', 'CustomerController');
     });
 
-    // Customers
+    // Manage store
     Route::group(['prefix' => 'manage-store'], function () {
         //Route::get('audits/fetch-product', 'StoreAuditController@fetchProduct');
         Route::post('audits/audits-verification', 'StoreAuditController@verifyProduct');
         Route::post('audits/audits-unverified', 'StoreAuditController@unverifyProduct');
         Route::get('edit-store-audit', 'StoreAuditController@editStoreAudit')->name('store.audit.edit');
         Route::get('edit-store-report', 'StoreAuditController@reportStoreAudit')->name('store.audit.report');
+        Route::get('release', 'ProductReleaseController@releaseProduct')->name('release.products.send');
 
         Route::resource('audits', 'StoreAuditController');
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('brands', 'BrandController');
+
+        Route::get('release-invoice', 'InvoiceController@releaseInvoice')->name('release.invoice');
+
+        Route::get('release-products', 'ProductReleaseController@index')->name('release.products.index');
+        Route::get('release-products/{sell}', 'ProductReleaseController@show')->name('release.products.show');
+
+
     });
 
     // Customers

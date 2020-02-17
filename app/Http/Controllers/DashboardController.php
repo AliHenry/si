@@ -58,18 +58,18 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function basic() 
-    {
-         return view('admin.dashboard.basic');
-    }
-
-    public function ecommerce() 
-    {
-        return view('admin.dashboard.ecommerce');
-    }
-
-    public function finance() 
-    {
-        return view('admin.dashboard.finance');
-    }
+//    public function basic()
+//    {
+//         return view('admin.dashboard.basic');
+//    }
+//
+//    public function ecommerce()
+//    {
+//        return view('admin.dashboard.ecommerce');
+//    }
+//
+//    public function finance()
+//    {
+//        return view('admin.dashboard.finance');
+//    }
 }

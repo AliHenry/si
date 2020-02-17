@@ -118,16 +118,22 @@ return [
                     'slug' => 'view.store.audit',
                 ],
                 [
-                    'title' => 'Category',
-                    'link' => '/admin/manage-store/categories',
-                    'active' => 'admin/manage-store/categories*',
-                    'slug' => 'view.categories',
-                ],
-                [
                     'title' => 'Product',
                     'link' => '/admin/manage-store/products',
                     'active' => 'admin/manage-store/products*',
                     'slug' => 'view.products',
+                ],
+                [
+                    'title' => 'Release Products',
+                    'link' => '/admin/manage-store/release-products',
+                    'active' => 'admin/manage-store/release-products*',
+                    'slug' => 'view.release.products',
+                ],
+                [
+                    'title' => 'Category',
+                    'link' => '/admin/manage-store/categories',
+                    'active' => 'admin/manage-store/categories*',
+                    'slug' => 'view.categories',
                 ],
                 [
                     'title' => 'Brand',
