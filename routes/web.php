@@ -8,9 +8,17 @@
 |
 */
 
-Route::get('/', [
-    'as' => 'home', 'uses' => 'FrontendController@home'
-]);
+//Route::get('/', [
+//    'as' => 'home', 'uses' => 'FrontendController@home'
+//]);
+
+Route::get('/', 'Front\FrontendController@home')->name('home');
+Route::get('shop', 'Front\ShopController@shop')->name('shop');
+Route::get('contact', 'Front\ContactController@index')->name('contact');
+Route::get('cart', 'Front\CartController@index')->name('cart');
+Route::get('checkout', 'Front\CheckoutController@index')->name('checkout');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,16 +31,18 @@ Route::get('/', [
 Route::patch('change-password/{id}', 'EmployeeController@changePassword')->name('change.password');
 //Route::get('edit-store-audit', 'StoreAuditController@EditStoreAudit')->name('store.audit.edit');
 
-// Billing
-Route::group(['prefix' => 'api'], function () {
-    Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
-
-});
+//// Billing
+//Route::group(['prefix' => 'api'], function () {
+//    Route::get('payment', 'PaymentController@getPayment')->name('payment.get');
+//
+//});
 
 Route::group([
     'prefix' => 'admin',
      'middleware' => 'admin'
 ], function () {
+
+    Route::get('download/{model}/{type}', 'DownloadController@download')->name('download');
 
     // Dashboard
     //----------------------------------
@@ -44,6 +54,9 @@ Route::group([
     Route::get('/dashboard/', [
         'as' => 'admin.dashboard', 'uses' => 'DashboardController@index'
     ]);
+
+    Route::get('profile', 'ProfileController@index')->name('profile');
+    Route::get('change-password', 'ProfileController@changePassword')->name('change.profile.password');
 
 
 
@@ -94,16 +107,14 @@ Route::group([
     // Manage store
     Route::group(['prefix' => 'manage-store'], function () {
         //Route::get('audits/fetch-product', 'StoreAuditController@fetchProduct');
-        Route::post('audits/audits-verification', 'StoreAuditController@verifyProduct');
-        Route::post('audits/audits-unverified', 'StoreAuditController@unverifyProduct');
-        Route::get('edit-store-audit', 'StoreAuditController@editStoreAudit')->name('store.audit.edit');
-        Route::get('edit-store-report', 'StoreAuditController@reportStoreAudit')->name('store.audit.report');
+
         Route::get('release', 'ProductReleaseController@releaseProduct')->name('release.products.send');
 
-        Route::resource('audits', 'StoreAuditController');
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('brands', 'BrandController');
+        Route::resource('purchase', 'PurchaseController');
+        Route::resource('suppliers', 'SupplierController');
 
         Route::get('release-invoice', 'InvoiceController@releaseInvoice')->name('release.invoice');
 
@@ -112,8 +123,14 @@ Route::group([
 
 
     });
+    Route::group(['prefix' => 'manage-expenditure'], function () {
 
-    // Customers
+        Route::resource('expenditure-types', 'TypeExpenditureController');
+        Route::resource('expenditures', 'ExpenditureController');
+
+    });
+
+    // Sells
     Route::group(['prefix' => 'manage-sells'], function () {
 
         Route::get('add-to-cart', 'SellController@insertCart')->name('add.cart');
@@ -124,9 +141,22 @@ Route::group([
         Route::resource('types', 'PaymentTypeController');
         Route::resource('status', 'PaymentStatusController');
         Route::resource('sells', 'SellController');
+        Route::resource('loans', 'LoanController');
         //Route::get('payment-invoice/{$id}', 'SellController@paymentInvoice')->name('sell.invoice');
 
 //        Route::resource('brands', 'BrandController');
+    });
+
+    // Audit
+    Route::group(['prefix' => 'manage-audits'], function () {
+        Route::post('audits/audits-verification', 'StoreAuditController@verifyProduct');
+        Route::post('audits/audits-unverified', 'StoreAuditController@unverifyProduct');
+        Route::get('edit-store-audit', 'StoreAuditController@editStoreAudit')->name('store.audit.edit');
+        Route::get('edit-store-report', 'StoreAuditController@reportStoreAudit')->name('store.audit.report');
+
+        Route::resource('product-audits', 'StoreAuditController');
+        Route::resource('audit-sells', 'SellController');
+
     });
 
     // Billing
@@ -148,7 +178,8 @@ Route::group([
 
     Route::group(['prefix' => 'settings'], function () {
 
-        Route::resource('zones', 'ZoneController');
+//        Route::resource('zones', 'ZoneController');
+        Route::resource('banks', 'BankController');
         Route::resource('departments', 'DepartmentController');
         Route::resource('designations', 'DesignationController');
         Route::resource('countries', 'CountryController');

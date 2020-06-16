@@ -1,5 +1,6 @@
 <?php
 
+use App\Purchase;
 use App\Sell;
 use App\Space\Settings\Setting;
 use Carbon\Carbon;
@@ -11,6 +12,8 @@ use App\Billing;
 use App\Employee;
 use App\Product;
 use App\Category;
+use App\Bank;
+use App\Loan;
 
 
 
@@ -42,13 +45,12 @@ function getFullName($key)
     return $key->first_name.' '.$key->middle_name.' '.$key->last_name;
 }
 
-function uploadImage($request){
+function uploadImage($request,  $desPath = 'employees'){
     $path = null;
 
     if ($request->has('avatar')){
         $file = $request->file('avatar');
-        $destinationPath = 'employees';
-
+        $destinationPath = $desPath;
 
         $path = $file->store($destinationPath, ['disk' => 'public']);
 
@@ -115,7 +117,7 @@ function productImage($path){
 }
 
 function priceFormat($price){
-    return '₦ '.$price;
+    return '₦ '.$price; //.number_format($price, 2, ',', '.');
 }
 
 function truncDescription($description){
@@ -159,9 +161,9 @@ function getNextCustomerNumber()
 {
     $interValNumber = 1;
 
-    $numberOfStripOutLetter = 9;
+    $numberOfStripOutLetter = 7;
 
-    $codePrefix = 'BA/MJD01/';
+    $codePrefix = 'SI/CUS/';
 
     $lastCustomer = Customer::orderBy('created_at', 'desc')->first();
 
@@ -275,6 +277,50 @@ function store_managers_permission($permission)
     }
 
     return $id;
+}
+
+function check_loan($sell)
+{
+    $customer = Customer::where('id', $sell->cus_id)->first();
+    $loan = Loan::where('cus_id', $sell->cus_id)->orderBy('created_at', 'desc')->first();
+
+    if ($loan){
+        $accumulated_loan = $loan->new_amount + $sell->total;
+        if($customer->credit_limit < $accumulated_loan){
+            return false;
+        }
+    }
+
+    $new_loan = new Loan();
+    $new_loan->cus_id = $sell->cus_id;
+    $new_loan->tran_id = $sell->id;
+    $new_loan->amount = $sell->total;
+    $new_loan->arrears =  $loan ? $loan->new_amount : $sell->total;
+    $new_loan->new_amount = $loan ? $accumulated_loan : $sell->total;
+    $new_loan->save();
+
+    return true;
+}
+
+function get_banks(){
+    return Bank::all();
+}
+
+function day_trucks_count(){
+    $truckCount = Purchase::groupBy('truck_no')
+        ->selectRaw('count(*) as total, truck_no')
+        ->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+        ->get();
+    return collect($truckCount)->count();
+}
+
+function daily_total_Purchase(){
+    $truckCount = Purchase::selectRaw('SUM(supplied_qty) as quantity ')
+        ->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+        ->get();
+    $truckCount = collect($truckCount)->pluck('quantity');
+
+    return $truckCount[0];
 }
 
 function set_permission($name)

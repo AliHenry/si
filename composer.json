@@ -17,7 +17,8 @@
         "laravel/socialite": "^2.0",
         "jeremykenedy/laravel-roles": "^2.3",
         "barryvdh/laravel-dompdf": "^0.8.5",
-        "hardevine/shoppingcart": "^2.7"
+        "hardevine/shoppingcart": "^2.7",
+        "maatwebsite/excel": "^3.1"
 
     },
     "require-dev": {

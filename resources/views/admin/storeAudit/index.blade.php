@@ -10,12 +10,12 @@
             <h3 class="page-title">Store Audits</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('audits.index')}}">Store Audits</a></li>
+                <li class="breadcrumb-item"><a href="{{route('product-audits.index')}}">Store Audits</a></li>
                 <li class="breadcrumb-item active">Store Audits</li>
             </ol>
             <div class="page-actions">
                 @permission('create.store.audit')
-                    <a href="{{route('audits.create')}}" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New Audit</a>
+                    <a href="{{route('product-audits.create')}}" class="btn btn-primary"><i class="icon-fa icon-fa-plus"></i> New Audit</a>
                 @endpermission
             </div>
         </div>
@@ -52,13 +52,13 @@
                                 <td>{{truncDescription($audit->note)}}</td>
                                 <td>
                                     @permission('edit.store.audit')
-                                        <a href="{{route('audits.show',$audit->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-search"></i> View</a>
+                                        <a href="{{route('product-audits.show',$audit->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-search"></i> View</a>
                                     @endpermission
                                     @permission('edit.store.audit')
-                                        <a href="{{route('audits.edit',$audit->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-edit"></i> Edit</a>
+                                        <a href="{{route('product-audits.edit',$audit->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-edit"></i> Edit</a>
                                     @endpermission
                                     @permission('delete.store.audit')
-                                        <a href="{{route('audits.destroy',$audit->id)}}" class="btn btn-default btn-sm" data-token="{{csrf_token()}}" data-delete data-confirmation="notie"> <i class="icon-fa icon-fa-trash"></i> Delete</a></td>
+                                        <a href="{{route('product-audits.destroy',$audit->id)}}" class="btn btn-default btn-sm" data-token="{{csrf_token()}}" data-delete data-confirmation="notie"> <i class="icon-fa icon-fa-trash"></i> Delete</a></td>
                                     @endpermission
 
                             </tr>

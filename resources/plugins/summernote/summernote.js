@@ -5912,7 +5912,7 @@
     };
 
     this.addToolbarButtons = function () {
-      context.memo('button.style', function () {
+      context.memo('style', function () {
         return ui.buttonGroup([
           ui.button({
             className: 'dropdown-toggle',

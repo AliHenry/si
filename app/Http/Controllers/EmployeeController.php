@@ -172,7 +172,6 @@ class EmployeeController extends Controller
             $employee->image = uploadImage($request);
         }
 
-
         if ($employee->save()) {
 
             flash('Successfully updated')->success();

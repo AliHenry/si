@@ -59,22 +59,6 @@
                             </div>
                             <hr>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label"><b>Zone</b></label>
-
-                                <div class="col-sm-10">
-                                    <p class="form-control-plaintext">{{ $customer->zone->name }}</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group row">
-                                <label class="col-sm-2 form-control-label"><b>Payment Type</b></label>
-
-                                <div class="col-sm-10">
-                                    <p class="form-control-plaintext">{{ $customer->paymentType->name.'/'.$customer->paymentType->price }}</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group row">
                                 <label class="col-sm-2 form-control-label"><b>State</b></label>
 
                                 <div class="col-sm-10">

@@ -78,6 +78,12 @@ class SellController extends Controller
         $request->cus_id ? $sell->cus_id = $request->cus_id : null;
 
 
+        if ($request->payment_type == 2){
+            if (!check_loan($sell)){
+                flash('Customer Loan is over the limit')->error();
+                return redirect()->back();
+            }
+        }
         if ($sell->save()) {
 
             //$products = [];

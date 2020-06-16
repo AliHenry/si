@@ -81,7 +81,7 @@
                         Expense
                     </span>
                     <span class="title text-danger">
-                      ₦ 200
+                      ₦ {{$revenueMonthlyAmount[0]}}
                     </span>
                     <div class="easy-pie-chart" data-percent="70" data-color="#f35a3d">
                         <span class="percent text-danger"></span>

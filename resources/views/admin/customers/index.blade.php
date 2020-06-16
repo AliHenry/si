@@ -42,21 +42,19 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Zone</th>
-                                <th>Payment Type</th>
+                                <th>Credit Limit</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             @foreach($customers as $customer)
                             <tr>
                                 <td>{{$customer->id}}</td>
-                                <td><img height="50" src="{{asset('storage/'.$customer->image)}}" alt="{{$customer->first_name}}"></td>
+                                <td><img height="50" src="{{productImage($customer->image)}}" alt="{{$customer->first_name}}"></td>
                                 <td>{{$customer->code}}</td>
                                 <td>{{$customer->first_name. ' '. $customer->middle_name. ' '. $customer->last_name}}</td>
                                 <td>{{$customer->phone}}</td>
                                 <td>{{$customer->email}}</td>
-                                <td>{{$customer->zone->name}}</td>
-                                <td>{{$customer->paymentType->name. '/'.$customer->paymentType->price }}</td>
+                                <td>{{priceFormat($customer->credit_limit)}}</td>
                                 <td>
                                     @permission('edit.customers')
                                         <a href="{{route('customers.show',$customer->id)}}" class="btn btn-default btn-sm"><i class="icon-fa icon-fa-search"></i> View</a>

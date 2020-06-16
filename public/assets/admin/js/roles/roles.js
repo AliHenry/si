@@ -9,21 +9,6 @@ var Users = (function () {
     $('[data-confirmation="notie"]').on('click', function () {
       $this = $(this);
       deleteRole($this);
-      // notie.confirm('Are you sure?', 'Yes! Delete this User', 'Cancel', function () {
-      //   toastr['success']('Role Deleted', 'Success')
-      //   //deleteRole($this)
-      // })
-      // notie.confirm({
-      //   text: 'Are you sure?',
-      //   submitText: 'Yes! Delete this Roles', // optional, default = 'Yes'
-      //   cancelText: 'Cancel', // optional, default = 'Cancel'
-      //   position: 'top', // optional, default = 'top', enum: ['top', 'bottom']
-      //   submitCallback: function () {
-      //     toastr['success']('Role Deleted', 'Success')
-      //     //deleteRole($this)
-      //   },// optional
-      //   cancelCallback: Function // optional
-      // }, submitCallbackOptional(), cancelCallbackOptional());
 
       return false
     })

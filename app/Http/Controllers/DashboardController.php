@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Billing;
 use App\Customer;
 use App\Employee;
+use App\Expenditure;
 use App\Zone;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -19,14 +20,14 @@ class DashboardController extends Controller
         $arrears = Billing::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->subMonth())->sum('arrears');
         $revenue = Billing::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->subMonth())->sum('paid_amount');
 
-        $groupedRevenue = Billing::select(
-            DB::raw('MONTHNAME(payment_date) as month'),
-            DB::raw('SUM(paid_amount) as monthlyRevenue'))
+        $groupedRevenue = Expenditure::select(
+            DB::raw('MONTHNAME(created_at) as month'),
+            DB::raw('SUM(amount) as monthlyRevenue'))
             ->groupBy('month')->orderBy('month', 'desc')->get()->toArray();
 
-        $groupedDayRevenue = Billing::select(
+        $groupedDayRevenue = Expenditure::select(
             DB::raw('DATE(created_at) as day'),
-            DB::raw('SUM(paid_amount) as monthlyRevenue'))
+            DB::raw('SUM(amount) as monthlyRevenue'))
             ->whereMonth('created_at', Carbon::now()->month)
             ->groupBy('day')->orderBy('day', 'asc')->get()->toArray();
 
@@ -44,7 +45,7 @@ class DashboardController extends Controller
         $days = collect($days);
 
         // return response()->json($revenueDaysAmount);
-        return view('admin.dashboard.finance')->with([
+        return view('admin.dashboard.basic')->with([
             'employeesCount' => $employeesCount,
             'customersCount' => $customersCount,
             'arrears' => $arrears,

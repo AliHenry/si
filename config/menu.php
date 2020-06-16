@@ -37,6 +37,12 @@ return [
                     'slug' => 'view.sells',
                 ],
                 [
+                    'title' => 'Loans',
+                    'link' => '/admin/manage-sells/loans',
+                    'active' => 'admin/manage-sells/loans*',
+                    'slug' => 'view.loans',
+                ],
+                [
                     'title' => 'Payment Type',
                     'link' => '/admin/manage-sells/types',
                     'active' => 'admin/manage-sells/types*',
@@ -112,12 +118,6 @@ return [
             'icon' => 'icon-fa icon-fa-th-large',
             'children' => [
                 [
-                    'title' => 'Audit',
-                    'link' => '/admin/manage-store/audits',
-                    'active' => 'admin/manage-store/audits*',
-                    'slug' => 'view.store.audit',
-                ],
-                [
                     'title' => 'Product',
                     'link' => '/admin/manage-store/products',
                     'active' => 'admin/manage-store/products*',
@@ -128,6 +128,18 @@ return [
                     'link' => '/admin/manage-store/release-products',
                     'active' => 'admin/manage-store/release-products*',
                     'slug' => 'view.release.products',
+                ],
+                [
+                    'title' => 'Purchase',
+                    'link' => '/admin/manage-store/purchase',
+                    'active' => 'admin/manage-store/purchase*',
+                    'slug' => 'view.purchase',
+                ],
+                [
+                    'title' => 'Suppliers',
+                    'link' => '/admin/manage-store/suppliers',
+                    'active' => 'admin/manage-store/suppliers*',
+                    'slug' => 'view.suppliers',
                 ],
                 [
                     'title' => 'Category',
@@ -155,6 +167,27 @@ return [
                     'link' => '/admin/manage-customers/customers',
                     'active' => 'admin/manage-customers/Customers*',
                     'slug' => 'view.customers',
+                ],
+            ]
+        ],
+        [
+            'title' => 'Manage Expenditure',
+            'link' => '#',
+            'active' => 'admin/manage-expenditure*',
+            'icon' => 'icon-fa icon-fa-th-large',
+            'slug' => 'view.expenditures',
+            'children' => [
+                [
+                    'title' => 'Expenditures',
+                    'link' => '/admin/manage-expenditure/expenditures',
+                    'active' => 'admin/manage-expenditure/expenditures*',
+                    'slug' => 'view.expenditures',
+                ],
+                [
+                    'title' => 'Expenditures Type',
+                    'link' => '/admin/manage-expenditure/expenditure-types',
+                    'active' => 'admin/manage-expenditure/expenditure-types*',
+                    'slug' => 'view.expenditure.types',
                 ],
             ]
         ],
@@ -188,6 +221,33 @@ return [
                     'link' => '/admin/manage-payment/payment-type',
                     'active' => 'admin/manage-payment/payment-type*',
                     'slug' => 'view.payment.types',
+                ],
+            ]
+        ],
+        [
+            'title' => 'Manage Audits',
+            'link' => '#',
+            'active' => 'admin/manage-audits*',
+            'icon' => 'icon-fa icon-fa-th-large',
+            'slug' => 'view.audit',
+            'children' => [
+                [
+                    'title' => 'Sells Audit ',
+                    'link' => '/admin/manage-audits/audit-sells',
+                    'active' => 'admin/manage-audits/audit-sells*',
+                    'slug' => 'view.audit.sells',
+                ],
+                [
+                    'title' => 'Product Audit',
+                    'link' => '/admin/manage-audits/product-audits',
+                    'active' => 'admin/manage-audits/product-audits*',
+                    'slug' => 'view.store.audit',
+                ],
+                [
+                    'title' => 'Purchase Audit',
+                    'link' => '/admin/manage-audits/purchase-audits',
+                    'active' => 'admin/manage-audits/purchase-audits*',
+                    'slug' => 'view.audit.purchase',
                 ],
             ]
         ],
@@ -238,10 +298,10 @@ return [
             'slug' => 'view.users',
             'children' => [
                 [
-                    'title' => 'Zones',
-                    'link' => '/admin/settings/zones',
-                    'active' => 'admin/settings/zones*',
-                    'slug' => 'view.zones',
+                    'title' => 'Banks',
+                    'link' => '/admin/settings/banks',
+                    'active' => 'admin/settings/banks*',
+                    'slug' => 'view.banks',
                 ],
                 [
                     'title' => 'Departments',

@@ -170,7 +170,7 @@ class ProductController extends Controller
         //return response()->json($product);
         if ($request->has('avatar')){
             Storage::disk('public')->delete($product->image);
-            $product->image = uploadImage($request);
+            $product->image = uploadImage($request, 'purchase');
         }
 
         if ($product->save()) {

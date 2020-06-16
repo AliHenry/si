@@ -19,6 +19,17 @@
           <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-star"></i> Separated link</a>
         </div>
       </li>
+      @permission('view.sells')
+      <li>
+        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-fa icon-fa-bank"></i></a>
+        <div class="dropdown-menu dropdown-menu-right notification-dropdown">
+          <h6 class="dropdown-header">Banks</h6>
+          @foreach(get_banks() as $bank)
+            <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-bank"></i>{{$bank->acc_no .' - '.$bank->bank_name}}</a>
+          @endforeach
+        </div>
+      </li>
+      @endpermission
       <li>
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-fa icon-fa-bell"></i></a>
         <div class="dropdown-menu dropdown-menu-right notification-dropdown">
@@ -30,7 +41,7 @@
       <li>
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{productImage(Auth::user()->profile->image)}}" alt="Avatar"></a>
         <div class="dropdown-menu dropdown-menu-right notification-dropdown">
-          <a class="dropdown-item" href="/admin/settings/social"><i class="icon-fa icon-fa-cogs"></i> Settings</a>
+          <a class="dropdown-item" href="{{route('profile')}}"><i class="icon-fa icon-fa-cogs"></i> Profile</a>
           <a class="dropdown-item" href="/logout"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>
         </div>
       </li>

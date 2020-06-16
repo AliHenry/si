@@ -19,27 +19,23 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::with(['zone','state', 'lga', 'paymentTypes'])->get();
+        $customers = Customer::with(['state', 'lga'])->get();
 
         return view('admin.customers.index')->with('customers', $customers);
     }
 
     public function show($id)
     {
-        $customer = Customer::with(['zone','state', 'lga', 'paymentTypes'] )->where('id', $id)->first();
+        $customer = Customer::with(['state', 'lga'] )->where('id', $id)->first();
 
         return view('admin.customers.show')->with('customer', $customer);
     }
 
     public function create()
     {
-        $zones = Zone::all();
         $states = State::all();
-        $paymentTypes = PaymentType::all();
         return view('admin.customers.store')->with([
             'states' => $states,
-            'paymentTypes' => $paymentTypes,
-            'zones' => $zones
         ]);
     }
 
@@ -51,8 +47,7 @@ class CustomerController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:255',
-            'zone_id' => 'required|string|max:255',
-            'pay_type_id' => 'required|string|max:255',
+            'credit_limit' => 'required|string|max:255',
             'state_id' => 'required|string|max:255',
             'lga_id' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -67,8 +62,7 @@ class CustomerController extends Controller
 
         $customer = new Customer();
         $customer->code = getNextCustomerNumber();
-        $customer->zone_id = $request->zone_id;
-        $customer->pay_type_id = $request->pay_type_id;
+        $customer->credit_limit = $request->credit_limit;
         $customer->first_name = $request->first_name;
         $customer->middle_name = $request->middle_name ? $request->middle_name : '';
         $customer->last_name = $request->last_name;
@@ -81,16 +75,6 @@ class CustomerController extends Controller
 
 
         if ($customer->save()) {
-            $customer = Customer::with('paymentTypes')->where('id', $customer->id)->first();
-
-            $billing = new Billing();
-            $billing->code = getNextBillingNumber();
-            $billing->user_id = \Auth::id();
-            $billing->cus_id = $customer->id;
-            $billing->arrears = 0;
-            $billing->current_amount = $customer->paymentType->price;
-            $billing->payment_date = Carbon::parse(now()->addMonth()->day(10))->format('Y-m-d');
-            $billing->save();
 
             flash('Successfully created')->success();
 
@@ -104,16 +88,12 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::findOrFail($id);
-        $zones = Zone::all();
         $states = State::all();
-        $paymentTypes = PaymentType::all();
         $lgas = LGA::all();
 
         return view('admin.customers.edit')->with([
             'customer' => $customer,
-            'zones' => $zones,
             'states' => $states,
-            'paymentTypes' => $paymentTypes,
             'lgas' => $lgas
         ]);
     }
@@ -126,8 +106,7 @@ class CustomerController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:255',
-            'zone_id' => 'required|string|max:255',
-            'pay_type_id' => 'required|string|max:255',
+            'credit_limit' => 'required|string|max:255',
             'state_id' => 'required|string|max:255',
             'lga_id' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -141,8 +120,7 @@ class CustomerController extends Controller
         ));
 
         $customer = Customer::findOrFail($id);;
-        $customer->zone_id = $request->zone_id;
-        $customer->pay_type_id = $request->pay_type_id;
+        $customer->credit_limit = $request->credit_limit;
         $customer->first_name = $request->first_name;
         $customer->middle_name = $request->middle_name;
         $customer->last_name = $request->last_name;

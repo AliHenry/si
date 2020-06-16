@@ -56,22 +56,9 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputFirstName"> Zone</label>
-                                        <select name="zone_id"  class="form-control ls-select2">
-                                            <option value="{{null}}"> -- select zone -- </option>
-                                            @foreach($zones as $zone)
-                                                <option value="{{$zone->id}}">{{$zone->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputFirstName"> Zone</label>
-                                        <select name="pay_type_id"  class="form-control ls-select2">
-                                            <option value="{{null}}"> -- select payment type -- </option>
-                                            @foreach($paymentTypes as $paymentType)
-                                                <option value="{{$paymentType->id}}">{{$paymentType->name.'/'.$paymentType->price}}</option>
-                                            @endforeach
-                                        </select>
+                                        <label for="inputFirstName">Credit Limit</label>
+                                        <input type="text" class="form-control" name="credit_limit" id="inputFirstName"
+                                               placeholder="Enter Phone Number">
                                     </div>
                                 </div>
                                 <div class="form-group">
